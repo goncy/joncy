@@ -7,12 +7,9 @@ import {parseJobs} from "./utils";
 export default {
   list: async (): Promise<Job[]> => {
     return axios
-      .get(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vT54anQqSMCQJqLvutODIsR4MqLyfAbqxzXiCdPTRESL34lAwhNLUo59-xrXXCr1SGg11VMcypOkBsk/pub?output=csv",
-        {
-          responseType: "blob",
-        },
-      )
+      .get(process.env.NEXT_PUBLIC_SHEET, {
+        responseType: "blob",
+      })
       .then(
         (response) =>
           new Promise((resolve, reject) => {
