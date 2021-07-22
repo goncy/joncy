@@ -13,7 +13,6 @@ import {
   StackDivider,
 } from "@chakra-ui/react";
 import {AppProps} from "next/app";
-import Script from "next/script";
 
 import theme from "../theme";
 
@@ -143,11 +142,6 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
           {/* End Footer */}
         </Container>
       </ChakraProvider>
-      {/* Adds gtm */}
-      <Script
-        src={`https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM}`}
-        strategy="afterInteractive"
-      />
     </>
   );
 };
