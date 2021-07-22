@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const jobs = await api.list();
 
   return {
-    revalidate: 10,
+    revalidate: 3600 * 6,
     props: {
       jobs,
     },
