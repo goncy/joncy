@@ -136,7 +136,12 @@ function JobCard({job}: Props): JSX.Element {
             </Text>
           )}
           <LinkOverlay href={job.link} marginLeft="auto" target="_blank">
-            <Button colorScheme="primary" size="sm" variant={job.featured ? "solid" : "ghost"}>
+            <Button
+              aria-label="Aplicar"
+              colorScheme="primary"
+              size="sm"
+              variant={job.featured ? "solid" : "ghost"}
+            >
               Aplicar
             </Button>
           </LinkOverlay>

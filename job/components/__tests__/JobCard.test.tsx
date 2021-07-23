@@ -1,6 +1,7 @@
 import * as React from "react";
-import {render, screen, within} from "@testing-library/react";
+import {render, screen, within, fireEvent} from "@testing-library/react";
 
+import * as analytics from "../../../analytics";
 import JobCard from "../JobCard";
 import {Job} from "../../types";
 
@@ -21,6 +22,21 @@ const base: Job = {
 };
 
 describe("JobCard", () => {
+  describe("side effects", () => {
+    test("it should track submission on analytics", () => {
+      const job = base;
+      const track = jest.spyOn(analytics, "track").mockReturnValue();
+
+      render(<JobCard job={job} />);
+
+      const submit = screen.getByLabelText("Aplicar");
+
+      fireEvent.click(submit);
+
+      expect(track).toHaveBeenCalled();
+    });
+  });
+
   describe("negations", () => {
     test("it should not show image when not provided", () => {
       const job = {
