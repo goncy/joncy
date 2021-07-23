@@ -1,5 +1,16 @@
 import React from "react";
-import {Stack, Text, Image, Badge, Button, LinkOverlay, LinkBox, Box} from "@chakra-ui/react";
+import {
+  Stack,
+  Text,
+  Image,
+  Badge,
+  Button,
+  LinkOverlay,
+  LinkBox,
+  Box,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import {StarIcon} from "@chakra-ui/icons";
 
 import * as analytics from "../../analytics";
@@ -10,8 +21,6 @@ interface Props {
 }
 
 function JobCard({job}: Props): JSX.Element {
-  const [tag, ...tags] = job.tags;
-
   return (
     <LinkBox
       key={job.id}
@@ -27,6 +36,7 @@ function JobCard({job}: Props): JSX.Element {
           title: `${job.company} - ${job.position}`,
           featured: job.featured,
           tags: job.tags,
+          seniority: job.seniority,
           id: job.id,
         })
       }
@@ -57,34 +67,49 @@ function JobCard({job}: Props): JSX.Element {
               <Text color="gray.500" fontSize={{base: "md", md: "sm"}} lineHeight="normal">
                 {job.company}
               </Text>
-              <Stack alignItems="baseline" direction="row" spacing={1}>
+              <Text
+                as="span"
+                display="inline-block"
+                fontSize={{base: "lg", md: "lg"}}
+                fontWeight="500"
+                lineHeight="normal"
+              >
                 {job.featured && (
                   <StarIcon
                     aria-label="star icon"
                     color="yellow.500"
+                    display="inline-block"
                     height={4}
+                    marginRight={1}
                     role="img"
+                    verticalAlign="baseline"
                     width={4}
                   />
                 )}
-                <Text fontSize={{base: "lg", md: "lg"}} fontWeight="500" lineHeight="normal">
-                  {job.position}
-                </Text>
-              </Stack>
+                {job.position}
+              </Text>
             </Stack>
           </Stack>
-          <Badge key={tag} colorScheme="primary" fontSize={11}>
-            {tag}
-          </Badge>
-        </Stack>
-        {Boolean(tags.length) && (
-          <Stack alignItems="center" direction="row" flexWrap="wrap" justifyContent="flex-start">
-            {tags.map((tag) => (
-              <Badge key={tag} colorScheme="gray" fontSize={{base: 11, md: 10}}>
-                {tag}
-              </Badge>
+          <Wrap justify="flex-end">
+            {job.seniority.map((category) => (
+              <WrapItem key={category}>
+                <Badge colorScheme="primary" fontSize={{base: 12, md: 11}}>
+                  {category}
+                </Badge>
+              </WrapItem>
             ))}
-          </Stack>
+          </Wrap>
+        </Stack>
+        {Boolean(job.tags.length) && (
+          <Wrap>
+            {job.tags.map((tag) => (
+              <WrapItem key={tag}>
+                <Badge colorScheme="green" fontSize={{base: 12, md: 11}}>
+                  {tag}
+                </Badge>
+              </WrapItem>
+            ))}
+          </Wrap>
         )}
         {job.description && (
           <Text
