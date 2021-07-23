@@ -2,6 +2,7 @@ import React from "react";
 import {Stack, Text, Image, Badge, Button, LinkOverlay, LinkBox, Box} from "@chakra-ui/react";
 import {StarIcon} from "@chakra-ui/icons";
 
+import * as analytics from "../../analytics";
 import {Job} from "../types";
 
 interface Props {
@@ -19,7 +20,7 @@ function JobCard({job}: Props): JSX.Element {
       data-testid={job.featured ? "featured-job" : "job"}
       padding={4}
       onClick={() =>
-        window.gtag("event", "click", {
+        analytics.track("click", {
           value: "apply",
           company: job.company,
           position: job.position,

@@ -16,15 +16,9 @@ import {AppProps} from "next/app";
 import Script from "next/script";
 
 import theme from "../theme";
+import * as analytics from "../analytics";
 
 const App: React.FC<AppProps> = ({Component, pageProps}) => {
-  // React.useEffect(() => {
-  //   window.gtag("js", new Date());
-  //   window.gtag("config", process.env.NEXT_PUBLIC_GTM, {
-  //     page_path: window.location.pathname,
-  //   });
-  // }, []);
-
   return (
     <>
       <Head>
@@ -154,27 +148,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM}`}
         strategy="lazyOnload"
-        onLoad={() => {
-          window.dataLayer = window.dataLayer || [];
-          window.gtag;
-
-          if (process.env.NEXT_PUBLIC_ENV === "production") {
-            console.log(`Analytics is enabled on ${process.env.NEXT_PUBLIC_ENV}`);
-
-            window.gtag = function gtag(..._args) {
-              window.dataLayer.push(arguments);
-            };
-
-            window.gtag("js", new Date());
-            window.gtag("config", process.env.NEXT_PUBLIC_GTM, {
-              page_path: window.location.pathname,
-            });
-          } else {
-            console.log(`Analytics is disabled on ${process.env.NEXT_PUBLIC_ENV}`);
-
-            window.gtag = (...args) => console.log(`Analytics event log: `, args);
-          }
-        }}
+        onLoad={analytics.initialize}
       />
     </>
   );
