@@ -104,7 +104,7 @@ function JobCard({job}: Props): JSX.Element {
               {job.max}
             </Text>
           )}
-          <LinkOverlay href={job.link} marginLeft="auto">
+          <LinkOverlay href={job.link} marginLeft="auto" target="_blank">
             <Button colorScheme="primary" size="sm" variant={job.featured ? "solid" : "ghost"}>
               Aplicar
             </Button>
