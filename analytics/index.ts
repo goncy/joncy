@@ -21,5 +21,9 @@ export function initialize(): void {
 }
 
 export function track(name: string, parameters: Record<string, any>): void {
-  window.gtag("event", name, parameters);
+  try {
+    window.gtag("event", name, parameters);
+  } catch (error) {
+    console.warn(`Analytics event couldn't be dispatched: `, error);
+  }
 }
