@@ -3,14 +3,14 @@ import {Badge, Stack, StackDivider, Text, Wrap, WrapItem} from "@chakra-ui/react
 
 import {Job} from "../../job/types";
 import JobCard from "../../job/components/JobCard";
-import {useCategories, useSeniorities} from "../../job/hooks";
+import {useTags, useSeniorities} from "../../job/hooks";
 
 interface Props {
   jobs: Job[];
 }
 
 const JobsScreen: React.FC<Props> = ({jobs}) => {
-  const {selected: selectedCategories, categories, toggle: toggleCategory} = useCategories(jobs);
+  const {selected: selectedTags, tags, toggle: toggleTag} = useTags(jobs);
   const {selected: selectedSeniorities, seniorities, toggle: toggleSeniority} = useSeniorities(
     jobs,
   );
@@ -18,45 +18,43 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
     () =>
       jobs.filter(
         (job) =>
-          (selectedCategories.length
-            ? job.tags.some((category) => selectedCategories.includes(category))
-            : true) &&
+          (selectedTags.length ? job.tags.some((tag) => selectedTags.includes(tag)) : true) &&
           (selectedSeniorities.length
             ? job.seniority.some((seniority) => selectedSeniorities.includes(seniority))
             : true),
       ),
-    [jobs, selectedCategories, selectedSeniorities],
+    [jobs, selectedTags, selectedSeniorities],
   );
 
   return (
     <Stack divider={<StackDivider />} spacing={0}>
       <Stack padding={4} spacing={4}>
         <Wrap justify="center">
-          {seniorities.map((category) => (
-            <WrapItem key={category}>
+          {seniorities.map((tag) => (
+            <WrapItem key={tag}>
               <Badge
                 as="button"
                 colorScheme="primary"
                 fontSize={{base: 14, md: 12}}
-                variant={selectedSeniorities.includes(category) ? "subtle" : "outline"}
-                onClick={() => toggleSeniority(category)}
+                variant={selectedSeniorities.includes(tag) ? "subtle" : "outline"}
+                onClick={() => toggleSeniority(tag)}
               >
-                {category}
+                {tag}
               </Badge>
             </WrapItem>
           ))}
         </Wrap>
         <Wrap justify="center">
-          {categories.map((category) => (
-            <WrapItem key={category}>
+          {tags.map((tag) => (
+            <WrapItem key={tag}>
               <Badge
                 as="button"
                 colorScheme="green"
                 fontSize={{base: 14, md: 12}}
-                variant={selectedCategories.includes(category) ? "subtle" : "outline"}
-                onClick={() => toggleCategory(category)}
+                variant={selectedTags.includes(tag) ? "subtle" : "outline"}
+                onClick={() => toggleTag(tag)}
               >
-                {category}
+                {tag}
               </Badge>
             </WrapItem>
           ))}

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {render, screen} from "@testing-library/react";
+import {render, screen, within} from "@testing-library/react";
 
 import JobCard from "../JobCard";
 import {Job} from "../../types";
@@ -13,6 +13,7 @@ const base: Job = {
   position: "position",
   description: "description",
   tags: ["js", "react"],
+  seniority: ["jr", "ssr"],
   link: "#",
   createdAt: 1000,
   expiredAt: 1000,
@@ -146,6 +147,36 @@ describe("JobCard", () => {
       render(<JobCard job={job} />);
 
       expect(screen.getByTestId("featured-job")).toBeInTheDocument();
+    });
+
+    test("it should show a list of seniority badges", () => {
+      const job = {
+        ...base,
+        featured: true,
+      };
+
+      render(<JobCard job={job} />);
+
+      const seniorities = screen.getByTestId("seniorities");
+
+      job.seniority.forEach((seniority) => {
+        expect(within(seniorities).getByText(seniority)).toBeInTheDocument();
+      });
+    });
+
+    test("it should show a list of tag badges", () => {
+      const job = {
+        ...base,
+        featured: true,
+      };
+
+      render(<JobCard job={job} />);
+
+      const tags = screen.getByTestId("tags");
+
+      job.tags.forEach((tag) => {
+        expect(within(tags).getByText(tag)).toBeInTheDocument();
+      });
     });
   });
 });

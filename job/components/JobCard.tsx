@@ -90,18 +90,18 @@ function JobCard({job}: Props): JSX.Element {
               </Text>
             </Stack>
           </Stack>
-          <Wrap justify="flex-end">
-            {job.seniority.map((category) => (
-              <WrapItem key={category}>
+          <Wrap data-testid="seniorities" justify="flex-end">
+            {job.seniority.map((seniority) => (
+              <WrapItem key={seniority}>
                 <Badge colorScheme="primary" fontSize={{base: 12, md: 11}}>
-                  {category}
+                  {seniority}
                 </Badge>
               </WrapItem>
             ))}
           </Wrap>
         </Stack>
         {Boolean(job.tags.length) && (
-          <Wrap>
+          <Wrap data-testid="tags">
             {job.tags.map((tag) => (
               <WrapItem key={tag}>
                 <Badge colorScheme="green" fontSize={{base: 12, md: 11}}>
