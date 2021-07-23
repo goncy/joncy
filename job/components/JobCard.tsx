@@ -39,7 +39,7 @@ function JobCard({job}: Props): JSX.Element {
           spacing={2}
           width="100%"
         >
-          <Stack direction="row">
+          <Stack alignItems="center" direction="row" spacing={2}>
             {job.image && (
               <Image
                 aria-label={`${job.company} logo`}
@@ -54,7 +54,7 @@ function JobCard({job}: Props): JSX.Element {
               />
             )}
             <Stack spacing={0}>
-              <Text color="gray.500" fontSize="sm">
+              <Text color="gray.500" fontSize={{base: "md", md: "sm"}} lineHeight="normal">
                 {job.company}
               </Text>
               <Stack alignItems="baseline" direction="row" spacing={1}>
@@ -67,27 +67,33 @@ function JobCard({job}: Props): JSX.Element {
                     width={4}
                   />
                 )}
-                <Text fontSize="lg" fontWeight="500" lineHeight="normal">
+                <Text fontSize={{base: "lg", md: "lg"}} fontWeight="500" lineHeight="normal">
                   {job.position}
                 </Text>
               </Stack>
             </Stack>
           </Stack>
-          <Badge key={tag} colorScheme="primary" fontSize={{base: 11, md: 12}}>
+          <Badge key={tag} colorScheme="primary" fontSize={11}>
             {tag}
           </Badge>
         </Stack>
         {Boolean(tags.length) && (
           <Stack alignItems="center" direction="row" flexWrap="wrap" justifyContent="flex-start">
             {tags.map((tag) => (
-              <Badge key={tag} colorScheme="gray" fontSize={{base: 9, md: 10}}>
+              <Badge key={tag} colorScheme="gray" fontSize={{base: 11, md: 10}}>
                 {tag}
               </Badge>
             ))}
           </Stack>
         )}
         {job.description && (
-          <Text color="gray.500" fontSize="sm" marginBottom={1} name={job.position} role="article">
+          <Text
+            color="gray.500"
+            fontSize={{base: "md", md: "sm"}}
+            marginBottom={1}
+            name={job.position}
+            role="article"
+          >
             {job.description}
           </Text>
         )}
