@@ -4,7 +4,7 @@ import {mode} from "@chakra-ui/theme-tools";
 export default extendTheme({
   config: {
     initialColorMode: "light",
-    useSystemColorMode: true,
+    useSystemColorMode: false,
   },
   colors: {
     primary: theme.colors.purple,
