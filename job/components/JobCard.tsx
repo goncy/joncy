@@ -133,6 +133,7 @@ function JobCard({job}: Props): JSX.Element {
               aria-label="Aplicar"
               colorScheme="primary"
               size="sm"
+              tabIndex={-1}
               variant={job.featured ? "solid" : "ghost"}
             >
               Aplicar
