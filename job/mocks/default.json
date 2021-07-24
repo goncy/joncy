@@ -1,7 +1,7 @@
 [
   {
     "id": "first",
-    "position": "SailPoint Developer",
+    "title": "SailPoint Developer",
     "company": "MajorKey",
     "description": "You will be employed at Highmetric as a Technical Consultant-Information Security to architect, deploy, support, and in some cases, train on the Identity Management solution by SailPoint for our growing global customer base.",
     "image": "https://media-exp1.licdn.com/dms/image/C560BAQGZnZX43rIWJg/company-logo_200_200/0/1622084777258?e=2159024400&v=beta&t=IO1q_2l8dB2e1P8h1iX2ZgwXuKLhR_0195L3Pym6JVc",
@@ -16,7 +16,7 @@
   },
   {
     "id": "firsty",
-    "position": "SailPoint Developer",
+    "title": "SailPoint Developer",
     "company": "MajorKey",
     "description": "You will be employed at Highmetric as a Technical Consultant-Information Security to architect, deploy, support, and in some cases, train on the Identity Management solution by SailPoint for our growing global customer base.",
     "image": "https://media-exp1.licdn.com/dms/image/C560BAQGZnZX43rIWJg/company-logo_200_200/0/1622084777258?e=2159024400&v=beta&t=IO1q_2l8dB2e1P8h1iX2ZgwXuKLhR_0195L3Pym6JVc",
@@ -29,7 +29,7 @@
   },
   {
     "id": "second",
-    "position": "General Application for Employment",
+    "title": "General Application for Employment",
     "company": "MajorKey",
     "image": "https://media-exp1.licdn.com/dms/image/C560BAQGZnZX43rIWJg/company-logo_200_200/0/1622084777258?e=2159024400&v=beta&t=IO1q_2l8dB2e1P8h1iX2ZgwXuKLhR_0195L3Pym6JVc",
     "min": "USD 9.000",
@@ -42,7 +42,7 @@
   },
   {
     "id": "third",
-    "position": "Column Group",
+    "title": "Column Group",
     "company": "MajorKey",
     "featured": true,
     "description": "We are an equal opportunity employer and do not unlawfully discriminate. No question on this application is used for the purpose of limiting or excluding any applicant from consideration for employment on a basis prohibited by local, state or federal law. Equal access to employment, services, and programs is available to all persons. Those applicants requiring reasonable accommodation to the application and/or interview process should notify a representative of the organization.",
@@ -56,7 +56,7 @@
   },
   {
     "id": "fourth",
-    "position": "SailPoint Developer",
+    "title": "SailPoint Developer",
     "company": "MajorKey",
     "min": "ARS 75.000",
     "max": "ARS 100.000",

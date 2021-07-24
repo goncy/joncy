@@ -1,7 +1,7 @@
 [
   {
     "id": "randstad-fullstack",
-    "position": "Fullstack Developer JR / SSR / SR",
+    "title": "Fullstack Developer JR / SSR / SR",
     "company": "Randstad",
     "description": "¡MAV - Mercado Argentino de Valores- te está buscando! Se parte de un grupo de empresas líderes del sector financiero y soluciones tecnológicas para el mercado de capitales.",
     "image": "https://media-exp1.licdn.com/dms/image/C4D0BAQE7S3pQDWTgMw/company-logo_200_200/0/1625582031411?e=2159024400&v=beta&t=Vt1iYij9nwuE4DV98q2EH_GbXwA-W6FBU0qJZQINaBc",
@@ -16,7 +16,7 @@
   },
   {
     "id": "aero-ui",
-    "position": "Junior UI & JS Developer",
+    "title": "Junior UI & JS Developer",
     "company": "Aerolab",
     "description": "Queremos que te sumes a nuestro equipo para desarrollar proyectos innovadores; nos gustaría que propongas, tengas curiosidad, experimentes y busques superarte en cada nuevo desafío.\nEn Aerolab usamos un enfoque centrado en el usuario para crear productos (sitios web, aplicaciones, interfaces, you name it), y estamos siempre evolucionando y encontrando nuevas formas de hacer las cosas.\nAcá vas a tener la oportunidad de trabajar en proyectos de todos los tamaños para que crezcas, te equivoques, aprendas y desarrolles al máximo tu talento.",
     "image": "https://aerolab.co/static/images/social/seo/Kite-96@2x.png",
@@ -31,7 +31,7 @@
   },
   {
     "id": "meli-bootcamp",
-    "position": "Dev Mobile - IT Bootcamp",
+    "title": "Dev Mobile - IT Bootcamp",
     "company": "MercadoLibre",
     "description": "IT Bootcamp es nuestro programa de capacitación regional para Software Engineers que quieran sumarse al enorme desafío de desarrollar la plataforma tecnológica líder en América Latina. Es una gran oportunidad para aquellas personas que estén buscando su primera experiencia profesional como Software Engineers Mobile.",
     "image": "https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2",
@@ -46,7 +46,7 @@
   },
   {
     "id": "majorkey-frontend",
-    "position": "Sr Front End Developer",
+    "title": "Sr Front End Developer",
     "company": "MajorKey",
     "description": "We are looking for a Frontend Developer to join our team! Our client works within the IA - based Marketing industry and are based in Chicago, IL. Their platform provides artificial Intelligence-enhanced customer engagement that drives results across the retail, healthcare, telecommunications, and financial industries.",
     "image": "https://media-exp1.licdn.com/dms/image/C560BAQGZnZX43rIWJg/company-logo_200_200/0/1622084777258?e=2159024400&v=beta&t=IO1q_2l8dB2e1P8h1iX2ZgwXuKLhR_0195L3Pym6JVc",
@@ -61,7 +61,7 @@
   },
   {
     "id": "majorkey-backend",
-    "position": "Sr Back End Developer",
+    "title": "Sr Back End Developer",
     "company": "MajorKey",
     "description": "We are looking for an Sr Back End Engineer to join our team! Our client works within the Digital Farming industry and are based in San Francisco, California. Their platform is a digital agriculture company that examines weather, soil and field data to help farmers determine potential yield-limiting factors in their fields.",
     "image": "https://media-exp1.licdn.com/dms/image/C560BAQGZnZX43rIWJg/company-logo_200_200/0/1622084777258?e=2159024400&v=beta&t=IO1q_2l8dB2e1P8h1iX2ZgwXuKLhR_0195L3Pym6JVc",
@@ -76,7 +76,7 @@
   },
   {
     "id": "rt-python",
-    "position": "Python Developer",
+    "title": "Python Developer",
     "company": "RealTrends",
     "description": "Escribir código eficiente, reusable y testeable con Django. Diseñar e implementar aplicaciones con buena performance, de baja latencia y alta disponibilidad. Integrar el backend con elementos desarrollados por el equipo de frontend utilizando APIs RESTful. Implementar medidas de seguridad y protección de datos. Estimar tareas y participar en la definición de producto con el resto del equipo.",
     "image": "https://www.real-trends.com/assets/images/real-trends-social-media-logo.png",
@@ -91,7 +91,7 @@
   },
   {
     "id": "rt-react",
-    "position": "React Frontend Developer",
+    "title": "React Frontend Developer",
     "company": "RealTrends",
     "description": "Estimar tareas y participar en la definición y desarrollo del ciclo completo de producto.\nDesarrollar nuevas funcionalidades utilizando frameworks de Single Page Application.\nConstruir componentes reutilizables y librerías de frontend.\nTraducir diseños y wireframes en código de alta calidad, eficientes y escalables.",
     "image": "https://www.real-trends.com/assets/images/real-trends-social-media-logo.png",
@@ -106,7 +106,7 @@
   },
   {
     "id": "rt-maqueta",
-    "position": "Maquetador Web Ssr",
+    "title": "Maquetador Web Ssr",
     "company": "RealTrends",
     "description": "Ownership del sitio web comercial, darle mantenimiento y actualización constante.\nImplementación de elementos visuales e interactivos en las landings pages, aplicando las mejores prácticas.\nMantenimiento y actualización del blog y otras landings realizadas en Wordpress, así como la implementación de nuevas landings.\nMaquetado de emails responsive.",
     "image": "https://www.real-trends.com/assets/images/real-trends-social-media-logo.png",
@@ -121,7 +121,7 @@
   },
   {
     "id": "southteams-node",
-    "position": "Sr. Node.js + AWS Backend",
+    "title": "Sr. Node.js + AWS Backend",
     "company": "Southteams",
     "description": "We are looking for a senior backend engineer with more than 5 years of experience using Node.js and AWS. Experience using MySQL or similar databases is a requirement as well as Redis or similar in-memory data bases. Experience with native mobile development like iOS or Android is a nice to have.",
     "image": "https://zenprospect-production.s3.amazonaws.com/uploads/pictures/5fe543e1d537120001fe11e9/picture",
@@ -136,7 +136,7 @@
   },
   {
     "id": "southteams-react",
-    "position": "Sr. Frontend (React.js + Django)",
+    "title": "Sr. Frontend (React.js + Django)",
     "company": "Southteams",
     "description": "We are looking for a Sr. Fullstack developer with at least 4 years of experience with React.js, Svelte, Vue.js or similar for the frontend and Django, Flask, Ruby or Node.js for the backend. Experience with Django is super nice to have. We can take candidates from anywhere in LATAM.",
     "image": "https://zenprospect-production.s3.amazonaws.com/uploads/pictures/5fe543e1d537120001fe11e9/picture",
@@ -151,7 +151,7 @@
   },
   {
     "id": "southteams-react",
-    "position": "Mid-Level Wordpress + Shopify",
+    "title": "Mid-Level Wordpress + Shopify",
     "company": "Southteams",
     "description": "We are looking for a mid-level Wordpress and Shopify developer with at least 2 years of experience with the platforms to work in marketing and e-commerce projects. We can take candidates from LATAM.",
     "image": "https://zenprospect-production.s3.amazonaws.com/uploads/pictures/5fe543e1d537120001fe11e9/picture",
@@ -166,7 +166,7 @@
   },
   {
     "id": "meli-pm",
-    "position": "Líder de Proyecto de Software",
+    "title": "Líder de Proyecto de Software",
     "company": "MercadoLibre",
     "description": "Tecnología es la esencia de nuestro producto. Nuestros equipos de desarrollo, arquitectura, base de datos, user experience y business intelligence co-crean y son responsables de la plataforma líder de e-commerce de América Latina y de uno de los sitios de mayor tráfico en todo el mundo. En una industria que se reinventa día a día, nuestros equipos son reconocidos por su visión y liderazgo. Desde aplicaciones móviles a machine learning, nuestra innovación tiene un claro foco: simplificarle la vida a quien utiliza nuestros productos.",
     "image": "https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2",
@@ -181,7 +181,7 @@
   },
   {
     "id": "aero-product",
-    "position": "Product Designer",
+    "title": "Product Designer",
     "company": "Aerolab",
     "description": "Queremos que te sumes a nuestro equipo para desarrollar proyectos innovadores; nos gustaría que propongas, tengas curiosidad, experimentes y busques superarte en cada nuevo desafío.\nEn Aerolab usamos un enfoque centrado en el usuario para crear productos (sitios web, aplicaciones, interfaces, you name it), y estamos siempre evolucionando y encontrando nuevas formas de hacer las cosas.\nAcá vas a tener la oportunidad de trabajar en proyectos de todos los tamaños para que crezcas, te equivoques, aprendas y desarrolles al máximo tu talento.",
     "image": "https://aerolab.co/static/images/social/seo/Kite-96@2x.png",
@@ -196,7 +196,7 @@
   },
   {
     "id": "randstad-devops",
-    "position": "DevOps JR / SSR / SR",
+    "title": "DevOps JR / SSR / SR",
     "company": "Randstad",
     "description": "¡MAV (Mercado Argentino de Valores) te está buscando! Se parte de un grupo de empresas líderes del sector financiero y soluciones tecnológicas para el mercado de capitales.Buscamos DevOps para trabajar en forma 100% remota y/o presencial en oficinas de Córdoba o Rosario. Objetivo del puesto: Complementar el área de infraestructura, brindando soporte interno a los equipos de desarrollo y garantizando el correcto funcionamiento de los servicios prestados a los diferentes clientes.",
     "image": "https://media-exp1.licdn.com/dms/image/C4D0BAQE7S3pQDWTgMw/company-logo_200_200/0/1625582031411?e=2159024400&v=beta&t=Vt1iYij9nwuE4DV98q2EH_GbXwA-W6FBU0qJZQINaBc",
@@ -211,7 +211,7 @@
   },
   {
     "id": "talentdeploy-frontend",
-    "position": "Frontend Product Engineer",
+    "title": "Frontend Product Engineer",
     "company": "Talentdeploy",
     "description": "Our client is looking for a Frontend Product Engineer to form part of its core team (first 20 employees). You’ll help set the direction of our technology as we scale our systems from serving hundreds of customers to thousands and move from Seed to Series A and beyond.",
     "image": "https://www.talentdeploy.com.ar/images/logo.png",
@@ -226,7 +226,7 @@
   },
   {
     "id": "talentdeploy-fullstack",
-    "position": "Full Stack Product Engineer",
+    "title": "Full Stack Product Engineer",
     "company": "Talentdeploy",
     "description": "Our client is looking for a Full Stack Engineer to form part of its core team (first 20 employees). You’ll help set the direction of our technology as we scale our systems from serving hundreds of customers to thousands and move from Seed to Series A and beyond.",
     "image": "https://www.talentdeploy.com.ar/images/logo.png",
@@ -241,7 +241,7 @@
   },
   {
     "id": "talentdeploy-backend",
-    "position": "Backend Product Engineer",
+    "title": "Backend Product Engineer",
     "company": "Talentdeploy",
     "description": "Our client is looking for a Backend Product Engineer to form part of its core team (first 20 employees). You’ll help set the direction of our technology as we scale our systems from serving hundreds of customers to thousands and move from Seed to Series A and beyond.",
     "image": "https://www.talentdeploy.com.ar/images/logo.png",

@@ -11,7 +11,7 @@ const base: Job = {
   company: "MajorKey",
   min: "ARS 100",
   max: "ARS 200",
-  position: "position",
+  title: "title",
   description: "description",
   tags: ["js", "react"],
   seniority: ["jr", "ssr"],
@@ -57,7 +57,7 @@ describe("JobCard", () => {
 
       render(<JobCard job={job} />);
 
-      expect(screen.queryByRole("article", {name: job.position})).not.toBeInTheDocument();
+      expect(screen.queryByRole("article", {name: job.title})).not.toBeInTheDocument();
     });
 
     test("it should not show min sallary when not provided", () => {

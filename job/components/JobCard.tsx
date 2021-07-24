@@ -32,8 +32,8 @@ function JobCard({job}: Props): JSX.Element {
         analytics.track("click", {
           value: "apply",
           company: job.company,
-          position: job.position,
-          title: `${job.company} - ${job.position}`,
+          position: job.title,
+          title: `${job.company} - ${job.title}`,
           featured: job.featured,
           tags: job.tags,
           seniority: job.seniority,
@@ -41,7 +41,7 @@ function JobCard({job}: Props): JSX.Element {
         })
       }
     >
-      <Stack>
+      <Stack spacing={{base: 3, md: 2}}>
         <Stack
           alignItems="flex-start"
           direction="row"
@@ -70,7 +70,7 @@ function JobCard({job}: Props): JSX.Element {
               <Text
                 as="span"
                 display="inline-block"
-                fontSize={{base: "lg", md: "lg"}}
+                fontSize={{base: "xl", md: "lg"}}
                 fontWeight="500"
                 lineHeight="normal"
               >
@@ -86,39 +86,34 @@ function JobCard({job}: Props): JSX.Element {
                     width={4}
                   />
                 )}
-                {job.position}
+                {job.title}
               </Text>
             </Stack>
           </Stack>
-          <Wrap data-testid="seniorities" justify="flex-end">
-            {job.seniority.map((seniority) => (
-              <WrapItem key={seniority}>
-                <Badge colorScheme="primary" fontSize={{base: 12, md: 11}}>
-                  {seniority}
-                </Badge>
-              </WrapItem>
-            ))}
-          </Wrap>
         </Stack>
-        {Boolean(job.tags.length) && (
-          <Wrap data-testid="tags">
-            {job.tags.map((tag) => (
-              <WrapItem key={tag}>
-                <Badge colorScheme="green" fontSize={{base: 12, md: 11}}>
-                  {tag}
-                </Badge>
-              </WrapItem>
-            ))}
-          </Wrap>
-        )}
+        <Stack alignItems="center" direction="row" justifyContent="space-between">
+          {Boolean(job.tags.length) && (
+            <Wrap data-testid="tags">
+              {Boolean(job.seniority.length) &&
+                job.seniority.map((seniority) => (
+                  <WrapItem key={seniority}>
+                    <Badge colorScheme="primary" fontSize={{base: 12, md: 11}}>
+                      {seniority}
+                    </Badge>
+                  </WrapItem>
+                ))}
+              {job.tags.map((tag) => (
+                <WrapItem key={tag}>
+                  <Badge colorScheme="green" fontSize={{base: 12, md: 11}}>
+                    {tag}
+                  </Badge>
+                </WrapItem>
+              ))}
+            </Wrap>
+          )}
+        </Stack>
         {job.description && (
-          <Text
-            color="gray.500"
-            fontSize={{base: "md", md: "sm"}}
-            marginBottom={1}
-            name={job.position}
-            role="article"
-          >
+          <Text color="gray.500" fontSize="md" name={job.title} role="article">
             {job.description}
           </Text>
         )}
