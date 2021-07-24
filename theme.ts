@@ -2,6 +2,10 @@ import {extendTheme, theme} from "@chakra-ui/react";
 import {mode} from "@chakra-ui/theme-tools";
 
 export default extendTheme({
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: true,
+  },
   colors: {
     primary: theme.colors.purple,
   },
@@ -25,9 +29,7 @@ export default extendTheme({
     Divider: {
       baseStyle: {
         opacity: 1,
-        ".chakra-ui-light &": {
-          borderColor: "blackAlpha.200",
-        },
+        borderColor: "blackAlpha.200",
         ".chakra-ui-dark &": {
           borderColor: "whiteAlpha.300",
         },
@@ -36,26 +38,20 @@ export default extendTheme({
   },
   layerStyles: {
     card: {
-      ".chakra-ui-light &": {
-        backgroundColor: "white",
-      },
+      backgroundColor: "white",
       ".chakra-ui-dark &": {
         backgroundColor: "gray.800",
       },
     },
     "featured-card": {
-      ".chakra-ui-light &": {
-        backgroundColor: "primary.50",
-      },
+      backgroundColor: "primary.50",
       ".chakra-ui-dark &": {
         backgroundColor: "primary.900",
       },
     },
     container: {
-      ".chakra-ui-light &": {
-        backgroundColor: "white",
-        borderColor: "blackAlpha.200",
-      },
+      backgroundColor: "white",
+      borderColor: "blackAlpha.200",
       ".chakra-ui-dark &": {
         borderColor: "whiteAlpha.300",
         backgroundColor: "gray.800",
@@ -64,9 +60,7 @@ export default extendTheme({
   },
   textStyles: {
     soft: {
-      ".chakra-ui-light &": {
-        color: "blackAlpha.600",
-      },
+      color: "blackAlpha.600",
       ".chakra-ui-dark &": {
         color: "whiteAlpha.600",
       },
