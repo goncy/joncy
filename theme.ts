@@ -16,7 +16,7 @@ export default extendTheme({
         backgroundRepeat: "no-repeat",
         backgroundPosition: "start",
         backgroundSize: "100% 200px",
-        backgroundColor: mode("light.100", "gray.900")(props),
+        backgroundColor: mode("gray.50", "gray.900")(props),
         padding: {
           base: 0,
           md: 4,
