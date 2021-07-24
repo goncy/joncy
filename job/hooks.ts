@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import * as analytics from "../analytics";
+
 import {Job} from "./types";
 
 export function useTags(
@@ -16,6 +18,11 @@ export function useTags(
   );
 
   function toggle(toggled: string) {
+    analytics.track("click", {
+      value: "tag",
+      name: toggled,
+    });
+
     setSelected((tags) =>
       tags.includes(toggled) ? tags.filter((tag) => tag !== toggled) : tags.concat(toggled),
     );
@@ -41,6 +48,11 @@ export function useSeniorities(
   );
 
   function toggle(toggled: string) {
+    analytics.track("click", {
+      value: "seniority",
+      name: toggled,
+    });
+
     setSelected((seniorities) =>
       seniorities.includes(toggled)
         ? seniorities.filter((seniority) => seniority !== toggled)
