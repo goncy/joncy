@@ -91,27 +91,25 @@ function JobCard({job}: Props): JSX.Element {
             </Stack>
           </Stack>
         </Stack>
-        <Stack alignItems="center" direction="row" justifyContent="space-between">
-          {Boolean(job.tags.length) && (
-            <Wrap data-testid="tags">
-              {Boolean(job.seniority.length) &&
-                job.seniority.map((seniority) => (
-                  <WrapItem key={seniority}>
-                    <Badge colorScheme="primary" fontSize={{base: 12, md: 11}}>
-                      {seniority}
-                    </Badge>
-                  </WrapItem>
-                ))}
-              {job.tags.map((tag) => (
-                <WrapItem key={tag}>
-                  <Badge colorScheme="green" fontSize={{base: 12, md: 11}}>
-                    {tag}
+        {Boolean(job.tags.length) && (
+          <Wrap data-testid="tags">
+            {Boolean(job.seniority.length) &&
+              job.seniority.map((seniority) => (
+                <WrapItem key={seniority}>
+                  <Badge colorScheme="primary" fontSize={{base: 12, md: 11}}>
+                    {seniority}
                   </Badge>
                 </WrapItem>
               ))}
-            </Wrap>
-          )}
-        </Stack>
+            {job.tags.map((tag) => (
+              <WrapItem key={tag}>
+                <Badge colorScheme="green" fontSize={{base: 12, md: 11}}>
+                  {tag}
+                </Badge>
+              </WrapItem>
+            ))}
+          </Wrap>
+        )}
         {job.description && (
           <Text color="gray.500" fontSize="md" name={job.title} role="article">
             {job.description}
