@@ -49,7 +49,7 @@ function JobCard({job}: Props): JSX.Element {
           spacing={2}
           width="100%"
         >
-          <Stack alignItems="center" direction="row" spacing={2}>
+          <Stack alignItems="flex-start" direction="row" spacing={2}>
             {job.image && (
               <Image
                 aria-label={`${job.company} logo`}
