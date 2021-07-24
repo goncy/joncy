@@ -25,8 +25,8 @@ function JobCard({job}: Props): JSX.Element {
     <LinkBox
       key={job.id}
       as={Box}
-      backgroundColor={job.featured ? "primary.50" : "white"}
       data-testid={job.featured ? "featured-job" : "job"}
+      layerStyle={job.featured ? "featured-card" : "card"}
       padding={4}
       onClick={() =>
         analytics.track("click", {
@@ -64,7 +64,7 @@ function JobCard({job}: Props): JSX.Element {
               />
             )}
             <Stack spacing={0}>
-              <Text color="gray.500" fontSize={{base: "md", md: "sm"}} lineHeight="normal">
+              <Text fontSize={{base: "md", md: "sm"}} lineHeight="normal" textStyle="soft">
                 {job.company}
               </Text>
               <Text
@@ -111,7 +111,7 @@ function JobCard({job}: Props): JSX.Element {
           </Wrap>
         )}
         {job.description && (
-          <Text color="gray.500" fontSize="md" name={job.title} role="article">
+          <Text fontSize="md" name={job.title} role="article" textStyle="soft">
             {job.description}
           </Text>
         )}
