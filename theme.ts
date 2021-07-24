@@ -2,10 +2,6 @@ import {extendTheme, theme} from "@chakra-ui/react";
 import {mode} from "@chakra-ui/theme-tools";
 
 export default extendTheme({
-  config: {
-    initialColorMode: "light",
-    useSystemColorMode: false,
-  },
   colors: {
     primary: theme.colors.purple,
   },
