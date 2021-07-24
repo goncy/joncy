@@ -21,11 +21,12 @@ const base: Job = {
   featured: false,
 };
 
+jest.mock("../../../analytics");
+
 describe("JobCard", () => {
   describe("side effects", () => {
-    test("it should track submission on analytics", () => {
+    it("should track submission on analytics", () => {
       const job = base;
-      const track = jest.spyOn(analytics, "track").mockReturnValue();
 
       render(<JobCard job={job} />);
 
@@ -33,12 +34,12 @@ describe("JobCard", () => {
 
       fireEvent.click(submit);
 
-      expect(track).toHaveBeenCalled();
+      expect(analytics.track).toHaveBeenCalled();
     });
   });
 
   describe("negations", () => {
-    test("it should not show image when not provided", () => {
+    it("should not show image when not provided", () => {
       const job = {
         ...base,
         image: null,
@@ -49,7 +50,7 @@ describe("JobCard", () => {
       expect(screen.queryByLabelText(`${job.company} logo`)).not.toBeInTheDocument();
     });
 
-    test("it should not show description when not provided", () => {
+    it("should not show description when not provided", () => {
       const job = {
         ...base,
         description: null,
@@ -60,7 +61,7 @@ describe("JobCard", () => {
       expect(screen.queryByRole("article", {name: job.title})).not.toBeInTheDocument();
     });
 
-    test("it should not show min sallary when not provided", () => {
+    it("should not show min sallary when not provided", () => {
       const job = {
         ...base,
         min: null,
@@ -71,7 +72,7 @@ describe("JobCard", () => {
       expect(screen.getByTestId("range")).not.toHaveTextContent(job.min);
     });
 
-    test("it should not show max sallary when not provided", () => {
+    it("should not show max sallary when not provided", () => {
       const job = {
         ...base,
         max: null,
@@ -82,7 +83,7 @@ describe("JobCard", () => {
       expect(screen.getByTestId("range")).not.toHaveTextContent(job.max);
     });
 
-    test("it should not show a star when not featured", () => {
+    it("should not show a star when not featured", () => {
       const job = base;
 
       render(<JobCard job={job} />);
@@ -92,7 +93,7 @@ describe("JobCard", () => {
   });
 
   describe("assertions", () => {
-    test("it should show a non featured background when is not featured", () => {
+    it("should show a non featured background when is not featured", () => {
       const job = base;
 
       render(<JobCard job={job} />);
@@ -100,7 +101,7 @@ describe("JobCard", () => {
       expect(screen.queryByTestId("featured-job")).not.toBeInTheDocument();
     });
 
-    test("it should show image when provided", () => {
+    it("should show image when provided", () => {
       const job = base;
 
       render(<JobCard job={job} />);
@@ -108,7 +109,7 @@ describe("JobCard", () => {
       expect(screen.getByLabelText(`${job.company} logo`)).toBeInTheDocument();
     });
 
-    test("it should show description when provided", () => {
+    it("should show description when provided", () => {
       const job = base;
 
       render(<JobCard job={job} />);
@@ -116,7 +117,7 @@ describe("JobCard", () => {
       expect(screen.getByText(job.description)).toBeInTheDocument();
     });
 
-    test("it should show min sallary when provided", () => {
+    it("should show min sallary when provided", () => {
       const job = base;
       const minRegex = new RegExp(job.min, "i");
 
@@ -125,7 +126,7 @@ describe("JobCard", () => {
       expect(screen.getByText(minRegex)).toBeInTheDocument();
     });
 
-    test("it should show max sallary when provided", () => {
+    it("should show max sallary when provided", () => {
       const job = base;
       const maxRegex = new RegExp(job.max, "i");
 
@@ -134,7 +135,7 @@ describe("JobCard", () => {
       expect(screen.getByText(maxRegex)).toBeInTheDocument();
     });
 
-    test("it should show min and max sallary when provided", () => {
+    it("should show min and max sallary when provided", () => {
       const job = base;
       const rangeRegex = new RegExp(`${job.min} - ${job.max}`, "i");
 
@@ -143,7 +144,7 @@ describe("JobCard", () => {
       expect(screen.getByText(rangeRegex)).toBeInTheDocument();
     });
 
-    test("it should show a star when featured", () => {
+    it("should show a star when featured", () => {
       const job = {
         ...base,
         featured: true,
@@ -154,7 +155,7 @@ describe("JobCard", () => {
       expect(screen.getByLabelText("star icon")).toBeInTheDocument();
     });
 
-    test("it should show a featured background when featured", () => {
+    it("should show a featured background when featured", () => {
       const job = {
         ...base,
         featured: true,
@@ -165,7 +166,7 @@ describe("JobCard", () => {
       expect(screen.getByTestId("featured-job")).toBeInTheDocument();
     });
 
-    test("it should show a list of seniority badges", () => {
+    it("should show a list of seniority badges", () => {
       const job = {
         ...base,
         featured: true,
@@ -173,14 +174,14 @@ describe("JobCard", () => {
 
       render(<JobCard job={job} />);
 
-      const seniorities = screen.getByTestId("seniorities");
+      const tags = screen.getByTestId("tags");
 
       job.seniority.forEach((seniority) => {
-        expect(within(seniorities).getByText(seniority)).toBeInTheDocument();
+        expect(within(tags).getByText(seniority)).toBeInTheDocument();
       });
     });
 
-    test("it should show a list of tag badges", () => {
+    it("should show a list of tag badges", () => {
       const job = {
         ...base,
         featured: true,
