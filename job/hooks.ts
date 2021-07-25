@@ -42,10 +42,9 @@ export function useSeniorities(
 } {
   const [selected, setSelected] = React.useState<string[]>([]);
   const seniorities = React.useMemo(
-    () =>
-      [
-        ...new Set<string>(jobs.reduce((seniority, job) => seniority.concat(job.seniority), [])),
-      ].sort(),
+    () => [
+      ...new Set<string>(jobs.reduce((seniority, job) => seniority.concat(job.seniority), [])),
+    ],
     [jobs],
   );
 
