@@ -97,8 +97,8 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
                 Soy frontend developer, actualmente trabajando en <b>Vercel</b>, también me gusta
                 generar contenido en <b>twitter</b>, <b>youtube</b> y <b>twitch</b>. Llegué a esta
                 idea, donde empresas con oportunidades abiertas y relevantes puedan publicarlas a un
-                costo razonable para conseguir llegada la comunidad. El dinero generado por estos
-                anuncios colabora a que <b>todo</b> mi contenido siga siendo gratuito mientras
+                costo razonable para conseguir llegada en la comunidad. El dinero generado por estos
+                anuncios colabora a que <b>todo</b> mi contenido siga siendo gratuito, mientras
                 acercamos más propuestas para conseguir un primer o mejor trabajo 🙌
               </Text>
               <Stack direction="row" justifyContent={{base: "center", md: "flex-start"}}>
