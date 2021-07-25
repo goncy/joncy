@@ -86,70 +86,78 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
         </Stack>
         <Divider />
         {/* Start Footer */}
-        <Stack direction={{base: "column-reverse", md: "row"}} padding={4} spacing={4}>
-          <Image minWidth={{base: "100%", sm: 36}} objectFit="contain" src="/assets/avatar.jpg" />
-          <Stack spacing={2}>
-            <Heading fontWeight="normal">
-              ¡Hola! Soy <b>Goncy</b>.
-            </Heading>
-            <Stack spacing={4}>
-              <Text>
-                Soy frontend developer, actualmente trabajando en <b>Vercel</b>, también me gusta
-                generar contenido en <b>twitter</b>, <b>youtube</b> y <b>twitch</b>. Llegué a esta
-                idea, donde empresas con oportunidades abiertas y relevantes puedan publicarlas a un
-                costo razonable para conseguir llegada en la comunidad. El dinero generado por estos
-                anuncios colabora a que <b>todo</b> mi contenido siga siendo gratuito, mientras
-                acercamos más propuestas para conseguir un primer o mejor trabajo 🙌
-              </Text>
-              <Stack direction="row" justifyContent={{base: "center", md: "flex-start"}}>
-                <Link isExternal href="https://twitter.gonzalopozzo.com">
-                  <Flex
-                    alignItems="center"
-                    backgroundColor="primary.500"
-                    backgroundImage={`url(https://icongr.am/fontawesome/twitter.svg?size=20&color=ffffff)`}
-                    backgroundPosition="7px 6px"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="20px"
-                    borderRadius={9999}
-                    color="white"
-                    height={8}
-                    justifyContent="center"
-                    width={8}
-                  />
-                </Link>
-                <Link isExternal href="https://twitch.gonzalopozzo.com">
-                  <Flex
-                    alignItems="center"
-                    backgroundColor="primary.500"
-                    backgroundImage={`url(https://icongr.am/fontawesome/twitch.svg?size=20&color=ffffff)`}
-                    backgroundPosition="7px 7px"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="20px"
-                    borderRadius={9999}
-                    color="white"
-                    height={8}
-                    justifyContent="center"
-                    width={8}
-                  />
-                </Link>
-                <Link isExternal href="https://youtube.gonzalopozzo.com">
-                  <Flex
-                    alignItems="center"
-                    backgroundColor="primary.500"
-                    backgroundImage={`url(https://icongr.am/fontawesome/youtube-play.svg?size=20&color=ffffff)`}
-                    backgroundPosition="7px 6px"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="20px"
-                    borderRadius={9999}
-                    color="white"
-                    height={8}
-                    justifyContent="center"
-                    width={8}
-                  />
-                </Link>
+        <Stack divider={<StackDivider />} spacing={0}>
+          <Stack direction={{base: "column-reverse", md: "row"}} padding={4} spacing={4}>
+            <Image minWidth={{base: "100%", sm: 36}} objectFit="contain" src="/assets/avatar.jpg" />
+            <Stack spacing={2}>
+              <Heading fontWeight="normal">
+                ¡Hola! Soy <b>Goncy</b>.
+              </Heading>
+              <Stack spacing={4}>
+                <Text>
+                  Soy frontend developer, actualmente trabajando en <b>Vercel</b>, también me gusta
+                  generar contenido en <b>twitter</b>, <b>youtube</b> y <b>twitch</b>. Llegué a esta
+                  idea, donde empresas con oportunidades abiertas y relevantes puedan publicarlas a
+                  un costo razonable para conseguir llegada en la comunidad. El dinero generado por
+                  estos anuncios colabora a que <b>todo</b> mi contenido siga siendo gratuito,
+                  mientras acercamos más propuestas para conseguir un primer o mejor trabajo 🙌
+                </Text>
+                <Stack direction="row" justifyContent={{base: "center", md: "flex-start"}}>
+                  <Link isExternal href="https://twitter.gonzalopozzo.com">
+                    <Flex
+                      alignItems="center"
+                      backgroundColor="primary.500"
+                      backgroundImage={`url(https://icongr.am/fontawesome/twitter.svg?size=20&color=ffffff)`}
+                      backgroundPosition="7px 6px"
+                      backgroundRepeat="no-repeat"
+                      backgroundSize="20px"
+                      borderRadius={9999}
+                      color="white"
+                      height={8}
+                      justifyContent="center"
+                      width={8}
+                    />
+                  </Link>
+                  <Link isExternal href="https://twitch.gonzalopozzo.com">
+                    <Flex
+                      alignItems="center"
+                      backgroundColor="primary.500"
+                      backgroundImage={`url(https://icongr.am/fontawesome/twitch.svg?size=20&color=ffffff)`}
+                      backgroundPosition="7px 7px"
+                      backgroundRepeat="no-repeat"
+                      backgroundSize="20px"
+                      borderRadius={9999}
+                      color="white"
+                      height={8}
+                      justifyContent="center"
+                      width={8}
+                    />
+                  </Link>
+                  <Link isExternal href="https://youtube.gonzalopozzo.com">
+                    <Flex
+                      alignItems="center"
+                      backgroundColor="primary.500"
+                      backgroundImage={`url(https://icongr.am/fontawesome/youtube-play.svg?size=20&color=ffffff)`}
+                      backgroundPosition="7px 6px"
+                      backgroundRepeat="no-repeat"
+                      backgroundSize="20px"
+                      borderRadius={9999}
+                      color="white"
+                      height={8}
+                      justifyContent="center"
+                      width={8}
+                    />
+                  </Link>
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
+          <Text padding={4} textAlign="center" textStyle="soft">
+            ¿Querés que la propuesta de tu empresa aparezca en <b>Joncy</b>? Escribime a{" "}
+            <Link color="primary.500" href="mailto:joncy@gonzalopozzo.com" target="blank">
+              joncy@gonzalopozzo.com
+            </Link>
+          </Text>
         </Stack>
         {/* End Footer */}
       </Container>
