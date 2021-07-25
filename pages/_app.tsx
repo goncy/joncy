@@ -154,7 +154,11 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
           </Stack>
           <Text padding={4} textAlign="center" textStyle="soft">
             ¿Querés que la propuesta de tu empresa aparezca en <b>Joncy</b>? Escribime a{" "}
-            <Link color="primary.500" href="mailto:joncy@gonzalopozzo.com" target="blank">
+            <Link
+              color="primary.500"
+              href="mailto:jobs@gonzalopozzo.com?subject=Quiero%20agregar%20mi%20propuesta%20a%20Joncy"
+              target="blank"
+            >
               joncy@gonzalopozzo.com
             </Link>
           </Text>
