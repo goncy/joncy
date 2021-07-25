@@ -59,7 +59,7 @@ function JobCard({job}: Props): JSX.Element {
                 loading="lazy"
                 minWidth={12}
                 objectFit="contain"
-                src={job.image}
+                src={`/api/image?url=${encodeURIComponent(job.image)}`}
                 width={12}
               />
             )}
