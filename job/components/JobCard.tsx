@@ -14,7 +14,7 @@ import {StarIcon} from "@chakra-ui/icons";
 
 import * as analytics from "../../analytics";
 import {Job} from "../types";
-import OptimizedImage from "../../ui/display/FixedImage";
+import FixedImage from "../../ui/display/FixedImage";
 
 interface Props {
   job: Job;
@@ -51,9 +51,9 @@ function JobCard({job}: Props): JSX.Element {
         >
           <Stack alignItems="flex-start" direction="row" spacing={2}>
             {job.image && (
-              <OptimizedImage
+              <FixedImage
+                alt={`${job.company} logo`}
                 aria-label={`${job.company} logo`}
-                backgroundColor="white"
                 borderRadius="md"
                 height={48}
                 loading="lazy"
@@ -125,7 +125,7 @@ function JobCard({job}: Props): JSX.Element {
               {job.max}
             </Text>
           )}
-          <LinkOverlay href={job.link} marginLeft="auto" target="_blank">
+          <LinkOverlay isExternal href={job.link} marginLeft="auto">
             <Button
               aria-label="Aplicar"
               colorScheme="primary"

@@ -115,7 +115,12 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
                   mientras acercamos más propuestas para conseguir un primer o mejor trabajo 🙌
                 </Text>
                 <Stack direction="row" justifyContent={{base: "center", md: "flex-start"}}>
-                  <Link isExternal href="https://twitter.gonzalopozzo.com">
+                  <Link
+                    isExternal
+                    href="https://twitter.gonzalopozzo.com"
+                    rel="noopener"
+                    title="twitter"
+                  >
                     <Flex
                       alignItems="center"
                       backgroundColor="primary.500"
@@ -130,7 +135,12 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
                       width={8}
                     />
                   </Link>
-                  <Link isExternal href="https://twitch.gonzalopozzo.com">
+                  <Link
+                    isExternal
+                    href="https://twitch.gonzalopozzo.com"
+                    rel="noopener"
+                    title="twitch"
+                  >
                     <Flex
                       alignItems="center"
                       backgroundColor="primary.500"
@@ -145,7 +155,12 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
                       width={8}
                     />
                   </Link>
-                  <Link isExternal href="https://youtube.gonzalopozzo.com">
+                  <Link
+                    isExternal
+                    href="https://youtube.gonzalopozzo.com"
+                    rel="noopener"
+                    title="youtube"
+                  >
                     <Flex
                       alignItems="center"
                       backgroundColor="primary.500"
