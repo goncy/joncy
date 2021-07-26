@@ -4,7 +4,6 @@ import {
   ChakraProvider,
   Heading,
   Text,
-  Image,
   Container,
   Stack,
   Divider,
@@ -12,12 +11,14 @@ import {
   Flex,
   StackDivider,
   useColorMode,
+  Box,
 } from "@chakra-ui/react";
 import {AppProps} from "next/app";
 import Script from "next/script";
 
 import theme from "../theme";
 import * as analytics from "../analytics";
+import FixedImage from "../ui/display/FixedImage";
 
 const App: React.FC<AppProps> = ({Component, pageProps}) => {
   const {toggleColorMode} = useColorMode();
@@ -88,7 +89,18 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
         {/* Start Footer */}
         <Stack divider={<StackDivider />} spacing={0}>
           <Stack direction={{base: "column-reverse", md: "row"}} padding={4} spacing={4}>
-            <Image minWidth={{base: "100%", sm: 36}} objectFit="contain" src="/assets/avatar.jpg" />
+            <Box
+              minHeight={{base: 512, md: 128}}
+              minWidth={{base: "100%", md: 36}}
+              position="relative"
+            >
+              <FixedImage
+                borderRadius="sm"
+                layout="fill"
+                objectFit="cover"
+                src="/assets/avatar.jpg"
+              />
+            </Box>
             <Stack spacing={2}>
               <Heading fontWeight="normal">
                 ¡Hola! Soy <b>Goncy</b>.
