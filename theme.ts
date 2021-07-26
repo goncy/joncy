@@ -62,7 +62,7 @@ export default extendTheme({
     soft: {
       color: "blackAlpha.700",
       ".chakra-ui-dark &": {
-        color: "whiteAlpha.600",
+        color: "whiteAlpha.700",
       },
     },
   },

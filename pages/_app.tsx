@@ -79,7 +79,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
             >
               Joncy
             </Heading>
-            <Text color="gray.600">
+            <Text textStyle="soft">
               Trabajos en IT que ayudan a seguir generando contenido para la comunidad 🙌
             </Text>
           </Stack>
