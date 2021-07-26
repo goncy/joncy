@@ -95,6 +95,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
               position="relative"
             >
               <FixedImage
+                alt="Gonzalo Pozzo parado con un micrófono"
                 borderRadius="sm"
                 layout="fill"
                 objectFit="cover"
