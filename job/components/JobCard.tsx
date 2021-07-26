@@ -69,27 +69,24 @@ function JobCard({job}: Props): JSX.Element {
               </Text>
               <Text
                 as="span"
-                display="inline-block"
                 fontSize={{base: "xl", md: "lg"}}
                 fontWeight="500"
                 lineHeight="normal"
               >
-                {job.featured && (
-                  <StarIcon
-                    aria-label="star icon"
-                    color="yellow.500"
-                    display="inline-block"
-                    height={4}
-                    marginRight={1}
-                    role="img"
-                    verticalAlign="baseline"
-                    width={4}
-                  />
-                )}
                 {job.title}
               </Text>
             </Stack>
           </Stack>
+          {job.featured && (
+            <StarIcon
+              aria-label="star icon"
+              color="yellow.500"
+              height={5}
+              marginRight={1}
+              role="img"
+              width={5}
+            />
+          )}
         </Stack>
         {Boolean(job.tags.length) && (
           <Wrap data-testid="tags">
