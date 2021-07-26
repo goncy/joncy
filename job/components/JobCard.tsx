@@ -2,7 +2,6 @@ import React from "react";
 import {
   Stack,
   Text,
-  Image,
   Badge,
   Button,
   LinkOverlay,
@@ -15,6 +14,7 @@ import {StarIcon} from "@chakra-ui/icons";
 
 import * as analytics from "../../analytics";
 import {Job} from "../types";
+import OptimizedImage from "../../ui/display/FixedImage";
 
 interface Props {
   job: Job;
@@ -51,16 +51,16 @@ function JobCard({job}: Props): JSX.Element {
         >
           <Stack alignItems="flex-start" direction="row" spacing={2}>
             {job.image && (
-              <Image
+              <OptimizedImage
                 aria-label={`${job.company} logo`}
                 backgroundColor="white"
                 borderRadius="md"
-                height={12}
+                height={48}
                 loading="lazy"
-                minWidth={12}
+                minWidth={48}
                 objectFit="contain"
                 src={`/api/image?url=${encodeURIComponent(job.image)}`}
-                width={12}
+                width={48}
               />
             )}
             <Stack spacing={0}>

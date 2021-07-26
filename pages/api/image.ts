@@ -6,16 +6,16 @@ interface GetRequest extends NextApiRequest {
   };
 }
 
-export default (req: NextApiRequest, res: NextApiResponse): void | NextApiResponse<any> => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method !== "GET") {
-    return res.status(400);
+    return res.status(400).end();
   }
 
   const {
     query: {url},
   } = req as GetRequest;
 
-  fetch(url)
+  return fetch(url)
     .then((response) => {
       res.setHeader("content-type", response.headers.get("content-type"));
       res.setHeader("content-length", response.headers.get("content-length"));
