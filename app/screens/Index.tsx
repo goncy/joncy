@@ -35,7 +35,7 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
               <Badge
                 as="button"
                 colorScheme="primary"
-                fontSize={{base: 14, md: 12}}
+                fontSize={{base: 16, md: 12}}
                 variant={selectedSeniorities.includes(tag) ? "subtle" : "outline"}
                 onClick={() => toggleSeniority(tag)}
               >
@@ -50,7 +50,7 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
               <Badge
                 as="button"
                 colorScheme="green"
-                fontSize={{base: 14, md: 12}}
+                fontSize={{base: 16, md: 12}}
                 variant={selectedTags.includes(tag) ? "subtle" : "outline"}
                 onClick={() => toggleTag(tag)}
               >

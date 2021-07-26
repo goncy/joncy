@@ -6,7 +6,7 @@ const FixedImage = chakra(Image, {
     backgroundColor: "white",
   },
   shouldForwardProp: (prop) =>
-    ["src", "width", "height", "layout", "placeholder", "blurDataURL"].includes(prop),
+    ["src", "width", "height", "layout", "placeholder", "blurDataURL", "alt"].includes(prop),
 });
 
 export default FixedImage;
