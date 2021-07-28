@@ -22,14 +22,14 @@ const Factory = chakra(Image, {
 });
 
 function FixedImage(props: Props): JSX.Element {
-  const [isLoaded, toggleLoaded] = React.useState(false);
+  const [isLoading, toggleLoading] = React.useState(true);
 
   return (
     <Factory
       {...props}
-      filter={isLoaded ? "grayscale(0) blur(0)" : "grayscale(1) blur(12px)"}
+      filter={isLoading ? "grayscale(1) blur(12px)" : "grayscale(0) blur(0)"}
       transition="filter .5s"
-      onLoadingComplete={() => toggleLoaded(true)}
+      onLoadingComplete={() => toggleLoading(false)}
     />
   );
 }
