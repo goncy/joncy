@@ -186,6 +186,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
               color="primary.500"
               href="mailto:jobs@gonzalopozzo.com?subject=Quiero%20agregar%20mi%20propuesta%20a%20Joncy"
               target="blank"
+              textStyle="link"
             >
               joncy@gonzalopozzo.com
             </Link>

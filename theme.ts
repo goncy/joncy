@@ -35,6 +35,14 @@ export default extendTheme({
         },
       },
     },
+    Badge: {
+      variants: {
+        outline: (props) => ({
+          color: mode(`${props.colorScheme}.600`, `${props.colorScheme}.200`)(props),
+          borderColor: mode(`${props.colorScheme}.500`, `${props.colorScheme}.200`)(props),
+        }),
+      },
+    },
   },
   layerStyles: {
     card: {
@@ -63,6 +71,12 @@ export default extendTheme({
       color: "blackAlpha.700",
       ".chakra-ui-dark &": {
         color: "whiteAlpha.700",
+      },
+    },
+    link: {
+      color: "primary.500",
+      ".chakra-ui-dark &": {
+        color: "primary.400",
       },
     },
   },
