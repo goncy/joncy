@@ -79,5 +79,11 @@ export default extendTheme({
         color: "primary.400",
       },
     },
+    success: {
+      color: "green.600",
+      ".chakra-ui-dark &": {
+        color: "green.300",
+      },
+    },
   },
 });
