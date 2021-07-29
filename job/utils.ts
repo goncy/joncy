@@ -10,6 +10,6 @@ export function parseJobs(jobs: RawJob[]): Job[] {
       tags: job.tags.split(",").map((tag) => tag.toLowerCase().trim()),
       seniority: job.seniority.split(",").map((tag) => tag.toLowerCase().trim()),
     }))
-    .filter((job) => job.expiredAt >= +new Date())
+    .filter((job) => job.expiredAt >= +new Date() && job.createdAt <= +new Date())
     .sort((a, b) => (a.featured ? -1 : b.featured ? 1 : b.createdAt - a.createdAt));
 }
