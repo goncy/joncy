@@ -1,31 +1,94 @@
 import React from "react";
-import {
-  Stack,
-  Text,
-  Badge,
-  Button,
-  LinkOverlay,
-  LinkBox,
-  Box,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
+import {Stack, Text, Badge, Button, Box, Wrap, WrapItem, useToast, Link} from "@chakra-ui/react";
 import {StarIcon} from "@chakra-ui/icons";
 
 import * as analytics from "../../analytics";
 import {Job} from "../types";
 import FixedImage from "../../ui/display/FixedImage";
-
 interface Props {
   job: Job;
 }
 
 function JobCard({job}: Props): JSX.Element {
+  const toast = useToast();
+  const isShareEnabled = process.browser && (navigator?.share || navigator?.clipboard);
+
+  function handleShare() {
+    if (navigator?.share) {
+      navigator
+        .share({
+          title: job.title,
+          text: job.description,
+          url: `${process.env.NEXT_PUBLIC_URL}/${job.id}`,
+        })
+        .then(() => {
+          toast({
+            status: "success",
+            title: "Bien!",
+            description: "La oportunidad se compartió correctamente",
+          });
+
+          analytics.track("click", {
+            value: "share",
+            company: job.company,
+            position: job.title,
+            title: `${job.company} - ${job.title}`,
+            featured: job.featured,
+            tags: job.tags,
+            seniority: job.seniority,
+            id: job.id,
+          });
+        })
+        .catch(() => {
+          toast({
+            status: "warning",
+            title: "Oops!",
+            description: "No se pudo compartir la oportunidad",
+          });
+        });
+    } else if (navigator?.clipboard) {
+      navigator.clipboard
+        .writeText(window.location.href)
+        .then(() => {
+          toast({
+            status: "success",
+            title: "Bien!",
+            description: "El link de la oportunidad fue copiado al portapapeles",
+          });
+
+          analytics.track("click", {
+            value: "share",
+            company: job.company,
+            position: job.title,
+            title: `${job.company} - ${job.title}`,
+            featured: job.featured,
+            tags: job.tags,
+            seniority: job.seniority,
+            id: job.id,
+          });
+        })
+        .catch(() => {
+          toast({
+            status: "warning",
+            title: "Oops!",
+            description: "No se pudo copiar la oportunidad al portapapeles",
+          });
+        });
+    } else {
+      toast({
+        status: "warning",
+        title: "Oops!",
+        description: "El dispositivo no cuenta con la capacidad de compartir",
+      });
+    }
+  }
+
   return (
-    <LinkBox
+    <Box
       key={job.id}
       as={Box}
       data-testid={job.featured ? "featured-job" : "job"}
+      id={job.id}
       layerStyle={job.featured ? "featured-card" : "card"}
       padding={4}
       onClick={() =>
@@ -100,7 +163,7 @@ function JobCard({job}: Props): JSX.Element {
               ))}
             {job.tags.map((tag) => (
               <WrapItem key={tag}>
-                <Badge colorScheme="green" fontSize={{base: 12, md: 11}}>
+                <Badge colorScheme="secondary" fontSize={{base: 12, md: 11}}>
                   {tag}
                 </Badge>
               </WrapItem>
@@ -120,20 +183,27 @@ function JobCard({job}: Props): JSX.Element {
               {job.max}
             </Text>
           )}
-          <LinkOverlay isExternal href={job.link} marginLeft="auto">
-            <Button
-              aria-label="Aplicar"
-              colorScheme="primary"
-              size="sm"
-              tabIndex={-1}
-              variant={job.featured ? "solid" : "ghost"}
-            >
-              Aplicar
-            </Button>
-          </LinkOverlay>
+          <Stack alignItems="baseline" direction="row" marginLeft="auto" spacing={4}>
+            {isShareEnabled && (
+              <Button colorScheme="secondary" size="sm" variant="link" onClick={handleShare}>
+                Compartir
+              </Button>
+            )}
+            <Link isExternal href={job.link}>
+              <Button
+                aria-label="Aplicar"
+                colorScheme="primary"
+                size="sm"
+                tabIndex={-1}
+                variant={job.featured ? "solid" : "ghost"}
+              >
+                Aplicar
+              </Button>
+            </Link>
+          </Stack>
         </Stack>
       </Stack>
-    </LinkBox>
+    </Box>
   );
 }
 

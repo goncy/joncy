@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["trabajos.gonzalopozzo.com"],
+    domains: [process.env.NEXT_PUBLIC_URL],
   },
 };

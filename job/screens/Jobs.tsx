@@ -1,9 +1,9 @@
 import * as React from "react";
 import {Badge, Stack, StackDivider, Text, Wrap, WrapItem} from "@chakra-ui/react";
 
-import {Job} from "../../job/types";
-import JobCard from "../../job/components/JobCard";
-import {useTags, useSeniorities} from "../../job/hooks";
+import {Job} from "../types";
+import JobCard from "../components/JobCard";
+import {useTags, useSeniorities} from "../hooks";
 
 interface Props {
   jobs: Job[];
@@ -18,10 +18,18 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
     () =>
       jobs.filter(
         (job) =>
-          (selectedTags.length ? job.tags.some((tag) => selectedTags.includes(tag)) : true) &&
+          // Check if there are tags selected
+          (selectedTags.length
+            ? // If some, check if it matches with some of the tags of this job
+              job.tags.some((tag) => selectedTags.includes(tag))
+            : // If none tags are selected just return true
+              true) &&
+          // Check if there are seniorities selected
           (selectedSeniorities.length
-            ? job.seniority.some((seniority) => selectedSeniorities.includes(seniority))
-            : true),
+            ? // If some, check if it matches with some of the seniorities of this job
+              job.seniority.some((seniority) => selectedSeniorities.includes(seniority))
+            : // If none tags are selected just return true
+              true),
       ),
     [jobs, selectedTags, selectedSeniorities],
   );
@@ -49,7 +57,7 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
             <WrapItem key={tag}>
               <Badge
                 as="button"
-                colorScheme="green"
+                colorScheme="secondary"
                 fontSize={{base: 16, md: 12}}
                 variant={selectedTags.includes(tag) ? "subtle" : "outline"}
                 onClick={() => toggleTag(tag)}

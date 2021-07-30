@@ -8,6 +8,7 @@ export default extendTheme({
   },
   colors: {
     primary: theme.colors.purple,
+    secondary: theme.colors.whatsapp,
   },
   styles: {
     global: (props) => ({

@@ -46,13 +46,13 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
           content="Joncy es un portal de empleos relevantes para la comunidad, con beneficios para empresas con búsquedas para primer trabajo o minorías"
           property="og:description"
         />
-        <meta content="https://trabajos.gonzalopozzo.com/assets/banner.jpg" property="og:image" />
+        <meta content={`${process.env.NEXT_PUBLIC_URL}/assets/banner.jpg`} property="og:image" />
         <meta
-          content="https://trabajos.gonzalopozzo.com/assets/banner.jpg"
+          content={`${process.env.NEXT_PUBLIC_URL}/assets/banner.jpg`}
           property="og:image:secure"
         />
         <meta
-          content="https://trabajos.gonzalopozzo.com/assets/banner.jpg"
+          content={`${process.env.NEXT_PUBLIC_URL}/assets/banner.jpg`}
           property="og:image:url"
         />
         <meta content="image/jpeg" property="og:image:type" />
@@ -166,7 +166,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
                       alignItems="center"
                       backgroundColor="primary.500"
                       backgroundImage={`url(https://icongr.am/fontawesome/youtube-play.svg?size=20&color=ffffff)`}
-                      backgroundPosition="7px 6px"
+                      backgroundPosition="6px 6px"
                       backgroundRepeat="no-repeat"
                       backgroundSize="20px"
                       borderRadius={9999}

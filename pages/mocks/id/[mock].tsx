@@ -5,29 +5,29 @@ import {GetStaticPaths, GetStaticProps} from "next";
 
 import {Job} from "../../../job/types";
 import api from "../../../job/api";
-import JobsScreen from "../../../job/screens/Jobs";
+import JobScreen from "../../../job/screens/Job";
 
 interface Props {
-  jobs: Job[];
+  job: Job;
 }
 
 interface Params extends ParsedUrlQuery {
   mock: string;
 }
 
-const IndexRoute: React.FC<Props> = ({jobs}) => {
-  return <JobsScreen jobs={jobs} />;
-};
+function IdRoute({job}: Props): JSX.Element {
+  return <JobScreen job={job} />;
+}
 
 export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) => {
-  // Get jobs for selected mock
-  const jobs = await api.mock.list(params.mock);
+  // Get job for selected mock
+  const job = await api.mock.fetch(params.mock);
 
   return {
     // Revalidate every 1 second
     revalidate: 1,
     props: {
-      jobs,
+      job,
     },
   };
 };
@@ -40,4 +40,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default IndexRoute;
+export default IdRoute;
