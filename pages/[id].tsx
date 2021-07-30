@@ -20,16 +20,28 @@ function IdRoute({job}: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) => {
-  // Fetch the selected job
-  const job = await api.fetch(params.id);
+  try {
+    // Fetch the selected job
+    const job = await api.fetch(params.id);
 
-  return {
-    // Revalidate every 6 hours
-    revalidate: 3600 * 6,
-    props: {
-      job,
-    },
-  };
+    // If job doesn't exist, throw an error
+    if (!job) {
+      throw new Error("No se encontró la oportunidad");
+    }
+
+    return {
+      // Revalidate every 6 hours
+      revalidate: 3600 * 6,
+      props: {
+        job,
+      },
+    };
+  } catch (error) {
+    // Handle error on error screen
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
