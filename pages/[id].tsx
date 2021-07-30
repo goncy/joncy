@@ -1,7 +1,7 @@
 import {ParsedUrlQuery} from "querystring";
 
 import * as React from "react";
-import {GetStaticProps} from "next";
+import {GetStaticPaths, GetStaticProps} from "next";
 
 import {Job} from "../job/types";
 import api from "../job/api";
@@ -29,6 +29,20 @@ export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) 
     props: {
       job,
     },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  // Fetch all jobs
+  const jobs = await api.list();
+
+  return {
+    // Map job id as param
+    paths: jobs.map((job) => ({
+      params: {id: job.id},
+    })),
+    // Build not relevant ones on demand
+    fallback: "blocking",
   };
 };
 
