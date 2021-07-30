@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import {AppProps} from "next/app";
 import Script from "next/script";
+import {MoonIcon, SunIcon} from "@chakra-ui/icons";
 
 import theme from "../theme";
 import * as analytics from "../analytics";
@@ -23,7 +24,7 @@ import TwitchIcon from "../ui/icons/Twitch";
 import YoutubeIcon from "../ui/icons/Youtube";
 
 const App: React.FC<AppProps> = ({Component, pageProps}) => {
-  const {toggleColorMode} = useColorMode();
+  const {toggleColorMode, colorMode} = useColorMode();
 
   return (
     <>
@@ -51,14 +52,20 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
       >
         <Stack divider={<StackDivider />} spacing={0}>
           <Stack alignItems="center" layerStyle="card" padding={4} spacing={2} textAlign="center">
-            <Heading
+            <Stack
+              alignItems="center"
               aria-label="Cambiar modo de color"
               cursor="pointer"
+              direction="row"
+              fontSize={{base: 20, md: 24}}
               role="button"
+              spacing={2}
               onClick={toggleColorMode}
             >
-              Joncy
-            </Heading>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              <Heading>Joncy</Heading>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            </Stack>
             <Text textStyle="soft">
               Trabajos en IT que ayudan a seguir generando contenido para la comunidad 🙌
             </Text>
