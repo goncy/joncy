@@ -53,7 +53,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
         <Stack divider={<StackDivider />} spacing={0}>
           <Stack alignItems="center" layerStyle="card" padding={4} spacing={2} textAlign="center">
             <Stack
-              alignItems="center"
+              alignItems="baseline"
               aria-label="Cambiar modo de color"
               cursor="pointer"
               direction="row"
