@@ -27,6 +27,16 @@ export default extendTheme({
     }),
   },
   components: {
+    Button: {
+      variants: {
+        link: (props) => ({
+          color: `${props.colorScheme}.600`,
+          ".chakra-ui-dark &": {
+            color: `${props.colorScheme}.200`,
+          },
+        }),
+      },
+    },
     Divider: {
       baseStyle: {
         opacity: 1,
@@ -39,8 +49,12 @@ export default extendTheme({
     Badge: {
       variants: {
         outline: (props) => ({
-          color: mode(`${props.colorScheme}.600`, `${props.colorScheme}.200`)(props),
-          borderColor: mode(`${props.colorScheme}.500`, `${props.colorScheme}.200`)(props),
+          color: `${props.colorScheme}.600`,
+          boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][600]}`,
+          ".chakra-ui-dark &": {
+            color: `${props.colorScheme}.200`,
+            boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][200]}`,
+          },
         }),
       },
     },
