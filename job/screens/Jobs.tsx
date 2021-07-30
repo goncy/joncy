@@ -35,8 +35,17 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
   );
 
   return (
-    <Stack divider={<StackDivider />} spacing={0}>
-      <Stack padding={4} spacing={4}>
+    <Stack spacing={0}>
+      <Stack
+        borderBottomWidth={1}
+        boxShadow="sm"
+        layerStyle="card"
+        padding={4}
+        position={{base: "inherit", md: "sticky"}}
+        spacing={4}
+        top={0}
+        zIndex={1}
+      >
         <Wrap justify="center">
           {seniorities.map((tag) => (
             <WrapItem key={tag}>
