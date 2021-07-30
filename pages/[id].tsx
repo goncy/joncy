@@ -36,7 +36,10 @@ function IdRoute({job}: Props): JSX.Element {
         <meta content="@goncy" name="twitter:site" />
         <meta content={`Joncy - ${job.company} - ${job.title}`} name="twitter:title" />
         <meta content={job.description} property="og:description" />
-        <meta content={`${process.env.NEXT_PUBLIC_URL}/assets/banner.jpg`} property="og:image" />
+        <meta
+          content={`${process.env.NEXT_PUBLIC_URL}/api/image?url=${encodeURIComponent(job.image)}`}
+          property="og:image"
+        />
         <meta
           content={`${process.env.NEXT_PUBLIC_URL}/api/image?url=${encodeURIComponent(job.image)}`}
           property="og:image:secure"
