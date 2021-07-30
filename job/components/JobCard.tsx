@@ -10,6 +10,8 @@ import {
   useToast,
   Link,
   useClipboard,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
 import {StarIcon} from "@chakra-ui/icons";
 
@@ -27,12 +29,6 @@ function JobCard({job}: Props): JSX.Element {
   function handleShare() {
     onCopy();
 
-    toast({
-      status: "success",
-      title: "Bien!",
-      description: "El link de la oportunidad fue copiado al portapapeles",
-    });
-
     analytics.track("click", {
       value: "share",
       company: job.company,
@@ -42,6 +38,12 @@ function JobCard({job}: Props): JSX.Element {
       tags: job.tags,
       seniority: job.seniority,
       id: job.id,
+    });
+
+    toast({
+      status: "success",
+      title: "Bien!",
+      description: "El link de la oportunidad fue copiado al portapapeles",
     });
   }
 
@@ -53,22 +55,11 @@ function JobCard({job}: Props): JSX.Element {
       id={job.id}
       layerStyle={job.featured ? "featured-card" : "card"}
       padding={4}
-      onClick={() =>
-        analytics.track("click", {
-          value: "apply",
-          company: job.company,
-          position: job.title,
-          title: `${job.company} - ${job.title}`,
-          featured: job.featured,
-          tags: job.tags,
-          seniority: job.seniority,
-          id: job.id,
-        })
-      }
     >
       <Stack spacing={{base: 3, md: 2}}>
-        <Stack
+        <LinkBox
           alignItems="flex-start"
+          as={Stack}
           direction="row"
           justifyContent="space-between"
           spacing={2}
@@ -92,14 +83,14 @@ function JobCard({job}: Props): JSX.Element {
               <Text fontSize={{base: "md", md: "sm"}} lineHeight="normal" textStyle="soft">
                 {job.company}
               </Text>
-              <Text
-                as="span"
+              <LinkOverlay
                 fontSize={{base: "xl", md: "lg"}}
                 fontWeight="500"
+                href={`/${job.id}`}
                 lineHeight="normal"
               >
                 {job.title}
-              </Text>
+              </LinkOverlay>
             </Stack>
           </Stack>
           {job.featured && (
@@ -112,7 +103,7 @@ function JobCard({job}: Props): JSX.Element {
               width={5}
             />
           )}
-        </Stack>
+        </LinkBox>
         {Boolean(job.tags.length) && (
           <Wrap data-testid="tags">
             {Boolean(job.seniority.length) &&
@@ -149,7 +140,22 @@ function JobCard({job}: Props): JSX.Element {
             <Button colorScheme="secondary" size="sm" variant="link" onClick={handleShare}>
               Compartir
             </Button>
-            <Link isExternal href={job.link}>
+            <Link
+              isExternal
+              href={job.link}
+              onClick={() =>
+                analytics.track("click", {
+                  value: "apply",
+                  company: job.company,
+                  position: job.title,
+                  title: `${job.company} - ${job.title}`,
+                  featured: job.featured,
+                  tags: job.tags,
+                  seniority: job.seniority,
+                  id: job.id,
+                })
+              }
+            >
               <Button
                 aria-label="Aplicar"
                 colorScheme="primary"
