@@ -8,7 +8,6 @@ import {
   Stack,
   Divider,
   Link,
-  Flex,
   StackDivider,
   useColorMode,
   Box,
@@ -18,7 +17,10 @@ import Script from "next/script";
 
 import theme from "../theme";
 import * as analytics from "../analytics";
+import TwitterIcon from "../ui/icons/Twitter";
 import FixedImage from "../ui/display/FixedImage";
+import TwitchIcon from "../ui/icons/Twitch";
+import YoutubeIcon from "../ui/icons/Youtube";
 
 const App: React.FC<AppProps> = ({Component, pageProps}) => {
   const {toggleColorMode} = useColorMode();
@@ -118,63 +120,54 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
                 <Stack direction="row" justifyContent={{base: "center", md: "flex-start"}}>
                   <Link
                     isExternal
+                    alignItems="center"
+                    backgroundColor="primary.500"
+                    borderRadius={9999}
+                    color="white"
+                    display="flex"
+                    height={8}
                     href="https://twitter.gonzalopozzo.com"
+                    justifyContent="center"
+                    padding={1.5}
                     rel="noopener"
                     title="twitter"
+                    width={8}
                   >
-                    <Flex
-                      alignItems="center"
-                      backgroundColor="primary.500"
-                      backgroundImage={`url(https://icongr.am/fontawesome/twitter.svg?size=20&color=ffffff)`}
-                      backgroundPosition="7px 6px"
-                      backgroundRepeat="no-repeat"
-                      backgroundSize="20px"
-                      borderRadius={9999}
-                      color="white"
-                      height={8}
-                      justifyContent="center"
-                      width={8}
-                    />
+                    <TwitterIcon />
                   </Link>
                   <Link
                     isExternal
+                    alignItems="center"
+                    backgroundColor="primary.500"
+                    borderRadius={9999}
+                    color="white"
+                    display="flex"
+                    height={8}
                     href="https://twitch.gonzalopozzo.com"
+                    justifyContent="center"
+                    padding={1.5}
                     rel="noopener"
                     title="twitch"
+                    width={8}
                   >
-                    <Flex
-                      alignItems="center"
-                      backgroundColor="primary.500"
-                      backgroundImage={`url(https://icongr.am/fontawesome/twitch.svg?size=20&color=ffffff)`}
-                      backgroundPosition="7px 7px"
-                      backgroundRepeat="no-repeat"
-                      backgroundSize="20px"
-                      borderRadius={9999}
-                      color="white"
-                      height={8}
-                      justifyContent="center"
-                      width={8}
-                    />
+                    <TwitchIcon />
                   </Link>
                   <Link
                     isExternal
+                    alignItems="center"
+                    backgroundColor="primary.500"
+                    borderRadius={9999}
+                    color="white"
+                    display="flex"
+                    height={8}
                     href="https://youtube.gonzalopozzo.com"
+                    justifyContent="center"
+                    padding={1.5}
                     rel="noopener"
                     title="youtube"
+                    width={8}
                   >
-                    <Flex
-                      alignItems="center"
-                      backgroundColor="primary.500"
-                      backgroundImage={`url(https://icongr.am/fontawesome/youtube-play.svg?size=20&color=ffffff)`}
-                      backgroundPosition="6px 6px"
-                      backgroundRepeat="no-repeat"
-                      backgroundSize="20px"
-                      borderRadius={9999}
-                      color="white"
-                      height={8}
-                      justifyContent="center"
-                      width={8}
-                    />
+                    <YoutubeIcon />
                   </Link>
                 </Stack>
               </Stack>
