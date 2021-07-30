@@ -30,7 +30,7 @@ export default extendTheme({
     Button: {
       variants: {
         link: (props) => ({
-          color: `${props.colorScheme}.600`,
+          color: `${props.colorScheme}.700`,
           ".chakra-ui-dark &": {
             color: `${props.colorScheme}.200`,
           },
