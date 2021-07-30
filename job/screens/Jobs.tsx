@@ -84,7 +84,7 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
           ))}
         </Stack>
       ) : (
-        <Text color="gray.500" fontSize="lg" margin="auto" paddingY={4}>
+        <Text fontSize="lg" margin="auto" paddingY={4} textAlign="center" textStyle="soft">
           No hay propuestas
         </Text>
       )}
