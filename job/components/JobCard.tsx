@@ -11,42 +11,10 @@ interface Props {
 
 function JobCard({job}: Props): JSX.Element {
   const toast = useToast();
-  const isShareEnabled = process.browser && (navigator?.share || navigator?.clipboard);
+  const isShareEnabled = process.browser && navigator?.clipboard;
 
   function handleShare() {
-    if (navigator?.share) {
-      navigator
-        .share({
-          title: job.title,
-          text: job.description,
-          url: `${process.env.NEXT_PUBLIC_URL}/${job.id}`,
-        })
-        .then(() => {
-          toast({
-            status: "success",
-            title: "Bien!",
-            description: "La oportunidad se compartió correctamente",
-          });
-
-          analytics.track("click", {
-            value: "share",
-            company: job.company,
-            position: job.title,
-            title: `${job.company} - ${job.title}`,
-            featured: job.featured,
-            tags: job.tags,
-            seniority: job.seniority,
-            id: job.id,
-          });
-        })
-        .catch(() => {
-          toast({
-            status: "warning",
-            title: "Oops!",
-            description: "No se pudo compartir la oportunidad",
-          });
-        });
-    } else if (navigator?.clipboard) {
+    if (navigator?.clipboard) {
       navigator.clipboard
         .writeText(window.location.href)
         .then(() => {
