@@ -49,8 +49,8 @@ export default extendTheme({
     Badge: {
       variants: {
         outline: (props) => ({
-          color: `${props.colorScheme}.600`,
-          boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][600]}`,
+          color: `${props.colorScheme}.700`,
+          boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][700]}`,
           ".chakra-ui-dark &": {
             color: `${props.colorScheme}.200`,
             boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][200]}`,
