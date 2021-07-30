@@ -14,7 +14,7 @@ function JobScreen({job}: Props): JSX.Element {
     <Stack divider={<StackDivider />} spacing={0}>
       <JobCard key={job.id} job={job} />
       <NextLink href="/">
-        <Link colorScheme="primary" padding={4} role="button" textAlign="center" textStyle="link">
+        <Link padding={4} role="button" textAlign="center" textStyle="link">
           Ver todas las propuestas
         </Link>
       </NextLink>

@@ -33,15 +33,24 @@ export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) 
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Fetch all jobs
-  const jobs = await api.list();
+  // Just prefetch paths on production
+  if (process.env.NODE_ENV === "production") {
+    // Fetch all jobs
+    const jobs = await api.list();
 
+    return {
+      // Map job id as param
+      paths: jobs.map((job) => ({
+        params: {id: job.id},
+      })),
+      // Build not relevant ones on demand
+      fallback: "blocking",
+    };
+  }
+
+  // Don't prefetch for non production environments
   return {
-    // Map job id as param
-    paths: jobs.map((job) => ({
-      params: {id: job.id},
-    })),
-    // Build not relevant ones on demand
+    paths: [],
     fallback: "blocking",
   };
 };

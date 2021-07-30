@@ -75,7 +75,9 @@ export default extendTheme({
       },
     },
     link: {
-      color: "primary.500",
+      "&": {
+        color: "primary.500",
+      },
       ".chakra-ui-dark &": {
         color: "primary.400",
       },
