@@ -1,4 +1,4 @@
-import {Job} from "../job/types";
+import {Job} from "../../job/types";
 
 export function buildSitemap(jobs: Job[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
