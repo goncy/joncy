@@ -1,5 +1,16 @@
 import React from "react";
-import {Stack, Text, Badge, Button, Box, Wrap, WrapItem, useToast, Link} from "@chakra-ui/react";
+import {
+  Stack,
+  Text,
+  Badge,
+  Button,
+  Box,
+  Wrap,
+  WrapItem,
+  useToast,
+  Link,
+  useClipboard,
+} from "@chakra-ui/react";
 import {StarIcon} from "@chakra-ui/icons";
 
 import * as analytics from "../../analytics";
@@ -11,44 +22,27 @@ interface Props {
 
 function JobCard({job}: Props): JSX.Element {
   const toast = useToast();
-  const isShareEnabled = process.browser && navigator?.clipboard;
+  const {onCopy} = useClipboard(`${process.env.NEXT_PUBLIC_URL}/${job.id}`);
 
   function handleShare() {
-    if (navigator?.clipboard) {
-      navigator.clipboard
-        .writeText(window.location.href)
-        .then(() => {
-          toast({
-            status: "success",
-            title: "Bien!",
-            description: "El link de la oportunidad fue copiado al portapapeles",
-          });
+    onCopy();
 
-          analytics.track("click", {
-            value: "share",
-            company: job.company,
-            position: job.title,
-            title: `${job.company} - ${job.title}`,
-            featured: job.featured,
-            tags: job.tags,
-            seniority: job.seniority,
-            id: job.id,
-          });
-        })
-        .catch(() => {
-          toast({
-            status: "warning",
-            title: "Oops!",
-            description: "No se pudo copiar la oportunidad al portapapeles",
-          });
-        });
-    } else {
-      toast({
-        status: "warning",
-        title: "Oops!",
-        description: "El dispositivo no cuenta con la capacidad de compartir",
-      });
-    }
+    toast({
+      status: "success",
+      title: "Bien!",
+      description: "El link de la oportunidad fue copiado al portapapeles",
+    });
+
+    analytics.track("click", {
+      value: "share",
+      company: job.company,
+      position: job.title,
+      title: `${job.company} - ${job.title}`,
+      featured: job.featured,
+      tags: job.tags,
+      seniority: job.seniority,
+      id: job.id,
+    });
   }
 
   return (
@@ -152,11 +146,9 @@ function JobCard({job}: Props): JSX.Element {
             </Text>
           )}
           <Stack alignItems="baseline" direction="row" marginLeft="auto" spacing={4}>
-            {isShareEnabled && (
-              <Button colorScheme="secondary" size="sm" variant="link" onClick={handleShare}>
-                Compartir
-              </Button>
-            )}
+            <Button colorScheme="secondary" size="sm" variant="link" onClick={handleShare}>
+              Compartir
+            </Button>
             <Link isExternal href={job.link}>
               <Button
                 aria-label="Aplicar"
