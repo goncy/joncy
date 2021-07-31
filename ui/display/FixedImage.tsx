@@ -15,6 +15,7 @@ const Factory = chakra(Image, {
       "height",
       "layout",
       "blurDataURL",
+      "aria-label",
       "alt",
       "onLoadingComplete",
       "placeholder",
