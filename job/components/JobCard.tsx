@@ -136,8 +136,14 @@ function JobCard({job}: Props): JSX.Element {
               {job.max}
             </Text>
           )}
-          <Stack alignItems="baseline" direction="row" marginLeft="auto" spacing={4}>
-            <Button colorScheme="secondary" size="sm" variant="link" onClick={handleShare}>
+          <Stack alignItems="center" direction="row" marginLeft="auto" spacing={4}>
+            <Button
+              colorScheme="secondary"
+              paddingY={2}
+              size="sm"
+              variant="link"
+              onClick={handleShare}
+            >
               Compartir
             </Button>
             <Link
