@@ -4,18 +4,24 @@ import Papa from "papaparse";
 import {Job, RawJob} from "./types";
 
 // Utilities
-function parseJob(job: RawJob): Job {
+export function parseJob(job: RawJob): Job {
   return {
     ...job,
     featured: Boolean(job.featured),
     createdAt: +new Date(job.createdAt),
     expiredAt: +new Date(job.expiredAt),
-    tags: job.tags.split(",").map((tag) => tag.toLowerCase().trim()),
-    seniority: job.seniority.split(",").map((tag) => tag.toLowerCase().trim()),
+    tags: job.tags
+      .split(",")
+      .map((tag) => tag.toLowerCase().trim())
+      .filter(Boolean),
+    seniority: job.seniority
+      .split(",")
+      .map((tag) => tag.toLowerCase().trim())
+      .filter(Boolean),
   };
 }
 
-function parseJobs(jobs: RawJob[]): Job[] {
+export function parseJobs(jobs: RawJob[]): Job[] {
   return jobs
     .map(parseJob)
     .filter((job) => job.expiredAt >= +new Date() && job.createdAt <= +new Date())

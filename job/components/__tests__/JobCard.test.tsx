@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as chakra from "@chakra-ui/react";
 import {render, screen, within, fireEvent} from "@testing-library/react";
 
 import * as analytics from "../../../analytics";
@@ -35,6 +36,25 @@ describe("JobCard", () => {
       fireEvent.click(submit);
 
       expect(analytics.track).toHaveBeenCalled();
+    });
+
+    it("should call track, toast and copy when share is clicked", () => {
+      const job = base;
+      const copy = jest.fn();
+      const toast = jest.fn();
+
+      jest.spyOn<any, any>(chakra, "useClipboard").mockReturnValue({onCopy: copy});
+      jest.spyOn<any, any>(chakra, "useToast").mockReturnValue(toast);
+
+      render(<JobCard job={job} />);
+
+      const share = screen.getByLabelText("Compartir");
+
+      fireEvent.click(share);
+
+      expect(analytics.track).toHaveBeenCalled();
+      expect(copy).toHaveBeenCalled();
+      expect(toast).toHaveBeenCalled();
     });
   });
 

@@ -14,6 +14,8 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
   const {selected: selectedSeniorities, seniorities, toggle: toggleSeniority} = useSeniorities(
     jobs,
   );
+  const hasSeniorities = seniorities.length > 0;
+  const hasTags = tags.length > 0;
   const matches = React.useMemo(
     () =>
       jobs.filter(
@@ -36,47 +38,53 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
 
   return (
     <Stack spacing={0}>
-      <Stack
-        borderBottomWidth={1}
-        boxShadow="sm"
-        layerStyle="card"
-        padding={4}
-        position={{base: "inherit", md: "sticky"}}
-        spacing={4}
-        top={0}
-        zIndex={1}
-      >
-        <Wrap justify="center">
-          {seniorities.map((tag) => (
-            <WrapItem key={tag}>
-              <Badge
-                as="button"
-                colorScheme="primary"
-                fontSize={{base: 16, md: 12}}
-                variant={selectedSeniorities.includes(tag) ? "subtle" : "outline"}
-                onClick={() => toggleSeniority(tag)}
-              >
-                {tag}
-              </Badge>
-            </WrapItem>
-          ))}
-        </Wrap>
-        <Wrap justify="center">
-          {tags.map((tag) => (
-            <WrapItem key={tag}>
-              <Badge
-                as="button"
-                colorScheme="secondary"
-                fontSize={{base: 16, md: 12}}
-                variant={selectedTags.includes(tag) ? "subtle" : "outline"}
-                onClick={() => toggleTag(tag)}
-              >
-                {tag}
-              </Badge>
-            </WrapItem>
-          ))}
-        </Wrap>
-      </Stack>
+      {(hasSeniorities || hasTags) && (
+        <Stack
+          borderBottomWidth={1}
+          boxShadow="sm"
+          layerStyle="card"
+          padding={4}
+          position={{base: "inherit", md: "sticky"}}
+          spacing={4}
+          top={0}
+          zIndex={1}
+        >
+          {hasSeniorities && (
+            <Wrap justify="center">
+              {seniorities.map((tag) => (
+                <WrapItem key={tag}>
+                  <Badge
+                    as="button"
+                    colorScheme="primary"
+                    fontSize={{base: 16, md: 12}}
+                    variant={selectedSeniorities.includes(tag) ? "subtle" : "outline"}
+                    onClick={() => toggleSeniority(tag)}
+                  >
+                    {tag}
+                  </Badge>
+                </WrapItem>
+              ))}
+            </Wrap>
+          )}
+          {hasTags && (
+            <Wrap justify="center">
+              {tags.map((tag) => (
+                <WrapItem key={tag}>
+                  <Badge
+                    as="button"
+                    colorScheme="secondary"
+                    fontSize={{base: 16, md: 12}}
+                    variant={selectedTags.includes(tag) ? "subtle" : "outline"}
+                    onClick={() => toggleTag(tag)}
+                  >
+                    {tag}
+                  </Badge>
+                </WrapItem>
+              ))}
+            </Wrap>
+          )}
+        </Stack>
+      )}
       {matches.length ? (
         <Stack divider={<StackDivider />} spacing={0}>
           {matches.map((job) => (

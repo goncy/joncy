@@ -84,6 +84,7 @@ function JobCard({job}: Props): JSX.Element {
                 {job.company}
               </Text>
               <LinkOverlay
+                aria-label={job.title}
                 fontSize={{base: "xl", md: "lg"}}
                 fontWeight="500"
                 href={`/${job.id}`}
@@ -138,6 +139,7 @@ function JobCard({job}: Props): JSX.Element {
           )}
           <Stack alignItems="center" direction="row" marginLeft="auto" spacing={4}>
             <Button
+              aria-label="Compartir"
               colorScheme="secondary"
               paddingY={2}
               size="sm"
