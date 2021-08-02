@@ -13,8 +13,3 @@ export interface Job {
   expiredAt: number;
   seniority: string[];
 }
-
-export interface RawJob extends Omit<Job, "tags" | "seniority"> {
-  tags: string;
-  seniority: string;
-}
