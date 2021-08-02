@@ -9,6 +9,9 @@ import api from "../job/api";
 import JobsScreen from "../job/screens/Jobs";
 import {buildSitemap} from "../app/utils/sitemap";
 
+// Set revalidation every 6 hours
+const REVALIDATION_SECONDS = 3600 * 6;
+
 interface Props {
   jobs: Job[];
   builtAt: number;
@@ -72,11 +75,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     // Revalidate every 6 hours
-    revalidate: 3600 * 6,
+    revalidate: REVALIDATION_SECONDS,
     props: {
       jobs,
+      // Get when the page was built
       builtAt: +new Date(),
-      revalidatedAt: +new Date() + 3600 * 6,
+      // Multiply revalidation seconds * 1000 so we get milliseconds back
+      revalidatedAt: +new Date() + REVALIDATION_SECONDS * 1000,
     },
   };
 };
