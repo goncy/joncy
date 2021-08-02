@@ -11,9 +11,13 @@ import {buildSitemap} from "../app/utils/sitemap";
 
 interface Props {
   jobs: Job[];
+  builtAt: number;
+  revalidatedAt: number;
 }
 
-const IndexRoute: React.FC<Props> = ({jobs}) => {
+const IndexRoute: React.FC<Props> = ({jobs, builtAt, revalidatedAt}) => {
+  console.info(`Joncy has build and revalidation times set at: `, builtAt, revalidatedAt);
+
   return (
     <>
       <Head>
@@ -71,6 +75,8 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 3600 * 6,
     props: {
       jobs,
+      builtAt: +new Date(),
+      revalidatedAt: +new Date() + 3600 * 6,
     },
   };
 };
