@@ -17,6 +17,7 @@
     "axios": "^0.21.1",
     "framer-motion": "^4",
     "next": "^11.0.2-canary.22",
+    "next-pwa": "^5.2.24",
     "papaparse": "^5.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"

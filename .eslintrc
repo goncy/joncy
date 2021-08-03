@@ -23,6 +23,7 @@
     "prettier"
   ],
   "plugins": ["react", "@typescript-eslint", "prettier", "import", "cypress"],
+  "ignorePatterns": ["**/*.js"],
   "rules": {
     "no-console": "warn",
     "prefer-rest-params": "off",
