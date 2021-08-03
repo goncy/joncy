@@ -151,7 +151,7 @@ function JobCard({job}: Props): JSX.Element {
             <Link
               isExternal
               href={job.link}
-              rel="nofollow"
+              rel="noopener noreferrer nofollow"
               onClick={() =>
                 analytics.track("click", {
                   value: "apply",
