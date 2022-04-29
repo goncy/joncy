@@ -17,6 +17,7 @@ const TAGS = [
   {id: "cypress", matcher: (query) => query.includes("cypress")},
   {id: "testing", matcher: (query) => query.includes("testing")},
   {id: "react", matcher: (query) => query.match(/react/gi)},
+  {id: "react native", matcher: (query) => query.includes("react native")},
   {id: "angular", matcher: (query) => query.includes("angular")},
   {id: "vue", matcher: (query) => query.includes("vue")},
   {id: "redux", matcher: (query) => query.includes("redux")},
