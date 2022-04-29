@@ -4,7 +4,122 @@ import {fileURLToPath} from "url";
 
 import papaparse from "papaparse";
 
-const POSITIONS = ``;
+const TAGS = [
+  {id: "javascript", matcher: (query) => query.match(/javascript|js/gi)},
+  {id: "typescript", matcher: (query) => query.includes("typescript")},
+  {id: "azure", matcher: (query) => query.includes("azure")},
+  {id: "aws", matcher: (query) => query.includes("aws")},
+  {id: "figma", matcher: (query) => query.includes("figma")},
+  {id: "php", matcher: (query) => query.includes("php")},
+  {id: "selenium", matcher: (query) => query.includes("selenium")},
+  {id: "xd", matcher: (query) => query.includes("xd")},
+  {id: "nosql", matcher: (query) => query.match(/mongo|couch/gi)},
+  {id: "cypress", matcher: (query) => query.includes("cypress")},
+  {id: "testing", matcher: (query) => query.includes("testing")},
+  {id: "react", matcher: (query) => query.match(/react/gi)},
+  {id: "angular", matcher: (query) => query.includes("angular")},
+  {id: "vue", matcher: (query) => query.includes("vue")},
+  {id: "redux", matcher: (query) => query.includes("redux")},
+  {id: "kubernetes", matcher: (query) => query.includes("kubernetes")},
+  {id: "sql", matcher: (query) => query.match(/(?!no)sql/gi)},
+  {id: "docker", matcher: (query) => query.includes("docker")},
+  {id: ".net", matcher: (query) => query.match(/net(?!\S)/gi)},
+  {id: "java", matcher: (query) => query.match(/java(?!script)/gi)},
+  {id: "nodejs", matcher: (query) => query.includes("node")},
+  {id: "webdriver", matcher: (query) => query.includes("webdriver")},
+  {id: "jmeter", matcher: (query) => query.includes("jmeter")},
+  {id: "ux", matcher: (query) => query.includes("ux")},
+  {id: "express", matcher: (query) => query.includes("express")},
+  {id: "shopify", matcher: (query) => query.includes("shopify")},
+  {id: "xamarin", matcher: (query) => query.includes("xamarin")},
+  {id: "android", matcher: (query) => query.includes("android")},
+  {id: "ios", matcher: (query) => query.match(/ios|swift|objectivec|objective c/gi)},
+  {id: "kotlin", matcher: (query) => query.includes("kotlin")},
+  {id: "swift", matcher: (query) => query.includes("swift")},
+  {id: "c#", matcher: (query) => query.includes("c#")},
+  {id: "c++", matcher: (query) => query.includes("c++")},
+  {id: "salesforce", matcher: (query) => query.includes("salesforce")},
+];
+
+const POSITIONS = `728 - Sr. Data Base Administrator (1 opening/s)
+We are looking for a great DBA with more than 5 years of experience working as a DBA with complex data structures. We need strong experience with relational databases like MySQL and non-relational databases like MongoDB or CouchDB. Snowflake experience is a must. Experience in Data Warehousing is required as well as a good understanding of Linux systems. IMPORTANT: This position requires candidates from Argentina and Uruguay only.
+
+Average Rate: $3500 - This rate is just average.
+
+732 - UX/UI Designer (1 opening/s)
+We are looking for a UX Designer with +3 years of experience working with responsive web design and a mobile first mentality. Experience working directly with stakeholders is required. Main work would be building web pages, dynamic landing pages, marketing campaign pages, checkout funnel and more.
+
+Average Rate: $2000 - This rate is just average.
+
+741 - iOS Developer (1 opening/s)
+We are looking for a Sr. iOS developer with more than 4 years of experience with swift/ios development. Good understanding of TDD, good practices, design patterns and clean architecture.
+
+Average Rate: $3500 - This rate is just average.
+
+743 - Shopify developer (1 opening/s)
+We are looking for a Senior Shopify developer with at least 4 years of experience with the platforms to work in a marketing and e-commerce project. We can take candidates from LATAM.
+
+Average Rate: $2500 - This rate is just average.
+
+748 - Sr. Java (4 opening/s)
+We are looking for a senior software engineer with more than 6 years of experience using Java. We need at least 3 years of hands on experience on complex enterprise systems and good understanding of dependency injection, web containers like Jetty, Tomcat, IIS and microservices architectures. Experience on reverse engineering, aspect oriented programming, containerization (Kubernetes, docker, etc..) is a plus. Candidates with POS experience will have priority. IMPORTANT: Candidates from Argentina and Uruguay only.
+
+Average Rate: $4500 - This rate is just average.
+
+759 - Sr. Java + Angular (1 opening/s)
+We are looking for a 4+ years of experience Fullstack Java + Angular engineer.
+
+Average Rate: $3500 - This rate is just average.
+
+764 - Sr. React (PHP migration) (1 opening/s)
+We are looking for a senior frontend developer with at least +5 years of experience in React.js to work on migrating a PHP App to React.js / Node.js, so we need some level of PHP (Laravel) experience aswell. IMPORTANT: This position requires candidates from Argentina or Uruguay.
+
+Average Rate: $3500 - This rate is just average.
+
+767 - Sr. Mobile (Cordova, Capacitor or Ionic) (2 opening/s)
+We are looking for a React.js developer with at least +4 years of experience building hybrid mobile apps with Cordova, CapacitorJS or Ionic. Ideal candidates will also have experience working with native Android development or iOS. IMPORTANT: This position requires candidates from Argentina or Uruguay.
+
+Average Rate: $4500 - This rate is just average.
+
+769 - Sr. QA Automation (3 opening/s)
+We are looking for a QA Automation engineer with +3 years of experience building automation tests and unit tests using Javascript. Experience with Mocha, WebDriver, Cypress or similar frameworks is required. IMPORTANT: This position requires candidates from Argentina or Uruguay.
+
+Average Rate: $4000 - This rate is just average.
+
+770 - Sr. Fullstack Node.js+React.js (1 opening/s)
+We are looking for a Sr. Fullstack Node.js+React.js developer with at least 3 years of experience working with the JS Stack. Candidates with experience with Python and Docker will have priority. Experience working on embedded systems is an important plus.
+
+Average Rate: $4000 - This rate is just average.
+
+771 - Sr. Embedded Engineer (1 opening/s)
+We are looking for a Senior Engineer with +3 years of experience working on embedded systems. Experience with C y C++ is required. Great communications skills in english is a must.
+
+Average Rate: $3500 - This rate is just average.
+
+775 - Sr. DevOps Engineer (Azure) (1 opening/s)
+We are looking for a DevOps Engineer with at least 4 years in the role. Experience with Microsoft Azure is required, experience with AWS is a plus. As well as Docker, Azure Kubernetes Service, Azure IaaS Compute / Storage / Databases / Networking/ Monitoring-auditing & Security. AzureDevOps: CI/CD Pipelines, Ability to set permission and maintain Projects. Scripting Language (Automation), PowerShell Knowledge of Agile Development, Development and Cloud Architecture.
+
+Average Rate: $4500 - This rate is just average.
+
+782 - Sr. Xamarin (1 opening/s)
+We are looking for a Sr. Xamarin developer with +4 years of experience working with UWP/Xamarin building apps for Android. Experience working in the healthcare industry is a plus.
+
+Average Rate: $4000 - This rate is just average.
+
+784 - Sr. React Native (1 opening/s)
+We are looking for a Sr. React/React Native developer with at least 5+ years of experience in the industry and at least 3+ years of building mobile apps with React Native to work in a crypto currency app.
+
+Average Rate: $5000 - This rate is just average.
+
+785 - Sr. Salesforce Developer (1 opening/s)
+We are looking for a Salesforce developer with a least 3 years of experience working with Salesforce. We need experience on hands-on administration experience as well as technical implementations abilities. You will be developing new functionality as well as providing support to development teams. Salesforce Admin Certification is a really nice to have. IMPORTANT: This positions requires candidates from Argentina or Uruguay.
+
+Average Rate: $4500 - This rate is just average.
+
+786 - Mid-level Business Analyst (1 opening/s)
+We are looking for a Business Analyst with a Bachelor’s degree in Business Administration, Information Sciences or equivalent degree and experience required of 3+ years’ experience in developing industry standard Business Requirements and Technical Specifications. Experience in Agile Software Development. Excellent communication skills in English. XP working with point of sales (POS), retail or e-commerce is required. IMPORTANT: Candidates from Argentina and Uruguay only.
+
+Average Rate: $2500 - This rate is just average.`;
 
 // Parse positions
 const data = POSITIONS.split(` - This rate is just average.`)
@@ -29,6 +144,14 @@ Confirmo que tengo un nivel de inglés conversacional que me permite compeltar u
     // Create the link
     const link = `https://wa.me?phone=5491141634695&text=${waText}`;
 
+    // Get the tag matcher
+    const matcher = `${title} ${description}`.toLowerCase();
+
+    // Get tags
+    const tags = TAGS.filter((tag) => tag.matcher(matcher))
+      .map((tag) => tag.id)
+      .join(",");
+
     // Return the registry
     return {
       id: `southteams-${id}`,
@@ -37,7 +160,7 @@ Confirmo que tengo un nivel de inglés conversacional que me permite compeltar u
       seniority: "sr",
       description,
       image: "https://pbs.twimg.com/profile_images/1172237780405170181/l_i50dqG.jpg",
-      tags: "",
+      tags,
       rate,
       link,
       expiredAt: "",
