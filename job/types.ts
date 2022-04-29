@@ -4,8 +4,7 @@ export interface Job {
   company: string;
   description?: string;
   image?: string;
-  min?: string;
-  max?: string;
+  rate?: string;
   tags: string[];
   link: string;
   featured: boolean;

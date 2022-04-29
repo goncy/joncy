@@ -130,11 +130,9 @@ function JobCard({job}: Props): JSX.Element {
           </Text>
         )}
         <Stack alignItems="center" direction="row" justifyContent="space-between" marginTop="auto">
-          {(job.min || job.max) && (
+          {job.rate && (
             <Text data-testid="range" fontSize="sm" fontWeight="500" textStyle="success">
-              {job.min}
-              {job.min && job.max && ` - `}
-              {job.max}
+              {job.rate}
             </Text>
           )}
           <Stack alignItems="center" direction="row" marginLeft="auto" spacing={4}>

@@ -10,8 +10,7 @@ const base: Job = {
   id: "id",
   image: "image",
   company: "MajorKey",
-  min: "ARS 100",
-  max: "ARS 200",
+  rate: "ARS 200",
   title: "title",
   description: "description",
   tags: ["js", "react"],
@@ -81,26 +80,15 @@ describe("JobCard", () => {
       expect(screen.queryByRole("article", {name: job.title})).not.toBeInTheDocument();
     });
 
-    it("should not show min sallary when not provided", () => {
+    it("should not show sallary when not provided", () => {
       const job = {
         ...base,
-        min: null,
+        rate: null,
       };
 
       render(<JobCard job={job} />);
 
-      expect(screen.getByTestId("range")).not.toHaveTextContent(job.min);
-    });
-
-    it("should not show max sallary when not provided", () => {
-      const job = {
-        ...base,
-        max: null,
-      };
-
-      render(<JobCard job={job} />);
-
-      expect(screen.getByTestId("range")).not.toHaveTextContent(job.max);
+      expect(screen.getByTestId("range")).not.toHaveTextContent(job.rate);
     });
 
     it("should not show a star when not featured", () => {
@@ -137,31 +125,13 @@ describe("JobCard", () => {
       expect(screen.getByText(job.description)).toBeInTheDocument();
     });
 
-    it("should show min sallary when provided", () => {
+    it("should show sallary when provided", () => {
       const job = base;
-      const minRegex = new RegExp(job.min, "i");
+      const sallaryRegex = new RegExp(job.rate, "i");
 
       render(<JobCard job={job} />);
 
-      expect(screen.getByText(minRegex)).toBeInTheDocument();
-    });
-
-    it("should show max sallary when provided", () => {
-      const job = base;
-      const maxRegex = new RegExp(job.max, "i");
-
-      render(<JobCard job={job} />);
-
-      expect(screen.getByText(maxRegex)).toBeInTheDocument();
-    });
-
-    it("should show min and max sallary when provided", () => {
-      const job = base;
-      const rangeRegex = new RegExp(`${job.min} - ${job.max}`, "i");
-
-      render(<JobCard job={job} />);
-
-      expect(screen.getByText(rangeRegex)).toBeInTheDocument();
+      expect(screen.getByText(sallaryRegex)).toBeInTheDocument();
     });
 
     it("should show a star when featured", () => {
