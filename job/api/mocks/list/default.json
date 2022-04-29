@@ -12,7 +12,7 @@
     "max": "ARS 100.000",
     "link": "#",
     "createdAt": "7/25/2021",
-    "expiredAt": "8/25/2021"
+    "expiredAt": "8/25/2025"
   },
   {
     "id": "firsty",
@@ -25,7 +25,7 @@
     "tier": "free",
     "link": "#",
     "createdAt": "7/25/2021",
-    "expiredAt": "8/25/2021"
+    "expiredAt": "8/25/2025"
   },
   {
     "id": "second",
@@ -38,7 +38,7 @@
     "tier": "free",
     "link": "#",
     "createdAt": "7/25/2021",
-    "expiredAt": "8/25/2021"
+    "expiredAt": "8/25/2025"
   },
   {
     "id": "third",
@@ -52,7 +52,7 @@
     "tier": "free",
     "link": "#",
     "createdAt": "7/25/2021",
-    "expiredAt": "8/25/2021"
+    "expiredAt": "8/25/2025"
   },
   {
     "id": "fourth",
@@ -65,6 +65,6 @@
     "tier": "free",
     "link": "#",
     "createdAt": "7/25/2021",
-    "expiredAt": "8/25/2021"
+    "expiredAt": "8/25/2025"
   }
 ]
