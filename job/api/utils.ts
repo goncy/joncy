@@ -6,7 +6,7 @@ export function parseJob(job: RawJob): Job {
   return {
     ...job,
     featured: Boolean(job.featured),
-    createdAt: +new Date(job.createdAt),
+    createdAt: job.createdAt ? +new Date(job.createdAt) : -Infinity,
     expiredAt: job.expiredAt ? +new Date(job.expiredAt) : Infinity,
     tags: job.tags
       .split(",")

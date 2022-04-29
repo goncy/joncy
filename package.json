@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "integration": "cypress run"
+    "integration": "cypress run",
+    "southteams": "node ./scripts/parse-southteams-positions.mjs"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.14",
