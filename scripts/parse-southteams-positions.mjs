@@ -134,10 +134,11 @@ const data = POSITIONS.split(` - This rate is just average.`)
     const rate = _rate.replace("Average Rate: $", "~ USD ");
 
     // Build whatsapp text
-    const waText = encodeURIComponent(`Estoy interesado en la posición ${id} de Southteams.
+    const waText = encodeURIComponent(`Estoy interesado en la posición ${id} - ${title} de Southteams.
 
 LinkedIn: <completar>
 Email: <completar>
+Salario pretendido: <completar>
 
 Confirmo que tengo un nivel de inglés conversacional que me permite compeltar una jornada laboral con gente que no habla español.`);
 
