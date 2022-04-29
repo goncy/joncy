@@ -41,3 +41,7 @@ temp
 
 # TODO
 TODO.md
+
+# Workbox
+/public/sw.**
+/public/workbox*
