@@ -45,3 +45,4 @@ TODO.md
 # Workbox
 /public/sw.**
 /public/workbox*
+/public/fallback**

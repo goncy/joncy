@@ -1,43 +1,35 @@
 {
   "env": {
-    "node": true,
-    "browser": true,
-    "es6": true,
-    "cypress/globals": true
-  },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "browser": false,
+    "es2021": true,
+    "node": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:cypress/recommended",
-    "prettier"
+    "plugin:prettier/recommended",
+    "next",
+    "next/core-web-vitals"
   ],
-  "plugins": ["react", "@typescript-eslint", "prettier", "import", "cypress"],
-  "ignorePatterns": ["**/*.js"],
+  "plugins": ["react", "prettier", "import", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
     "no-console": "warn",
-    "prefer-rest-params": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "args": "after-used",
-        "ignoreRestSiblings": false,
-        "argsIgnorePattern": "^_.*?$"
-      }
-    ],
+    "react/prop-types": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "printWidth": 100,
         "trailingComma": "all",
@@ -46,25 +38,42 @@
         "singleQuote": false,
         "bracketSpacing": false,
         "arrowParens": "always",
-        "endOfLine": "auto"
+        "endOfLine":"auto"
       }
     ],
-    "import/order": ["warn", {"newlines-between": "always"}],
-    "react/prop-types": "off",
-    "react/self-closing-comp": "warn",
-    "react-hooks/rules-of-hooks": "warn",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-sort-props": ["warn", {
-      "callbacksLast": true,
-      "shorthandFirst": true,
-      "noSortAlphabetically": false,
-      "reservedFirst": true
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "ignoreRestSiblings": false,
+        "argsIgnorePattern": "^_.*?$"
+      }
+    ],
+    "import/order": ["warn", {
+      "groups": ["type", "builtin", "object", "external", "internal", "parent", "sibling", "index"],
+      "pathGroups": [{
+        "pattern": "~/**",
+        "group": "external",
+        "position": "after"
+      }],
+      "newlines-between": "always"
     }],
+    "react/self-closing-comp": "warn",
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
+      }
+    ],
     "padding-line-between-statements": [
-      "error",
-      { "blankLine": "always", "prev": "*", "next": "return" },
-      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
-      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]}
-    ]
+      "warn",
+      {"blankLine": "always", "prev": "*", "next": ["return", "export"]},
+      {"blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
+      {"blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]}
+    ],
+    "@next/next/no-document-import-in-page": "off"
   }
 }

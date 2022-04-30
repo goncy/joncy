@@ -36,7 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     // Only get paths for non production environments
-    fallback: process.env.NODE_ENV === "production" ? false : "blocking",
+    fallback: process.env.NEXT_PUBLIC_ENV === "production" ? false : "blocking",
   };
 };
 

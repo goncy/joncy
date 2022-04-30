@@ -19,6 +19,8 @@ export default extendTheme({
         backgroundPosition: "start",
         backgroundSize: "100% 200px",
         backgroundColor: mode("gray.50", "gray.900")(props),
+      },
+      "#__next": {
         padding: {
           base: 0,
           md: 4,

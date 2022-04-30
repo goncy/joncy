@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) 
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Just prefetch paths on production
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NEXT_PUBLIC_ENV === "production") {
     // Fetch all jobs
     const jobs = await api.list();
 

@@ -6,7 +6,7 @@ interface GetRequest extends NextApiRequest {
   };
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method !== "GET") {
     return res.status(400).end();
   }
@@ -26,4 +26,6 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       return res.status(200).send(response.body);
     })
     .catch((error) => res.status(500).end(error.message));
-};
+}
+
+export default handler;

@@ -19,6 +19,7 @@ interface Props {
 }
 
 const IndexRoute: React.FC<Props> = ({jobs, builtAt, revalidatedAt}) => {
+  // eslint-disable-next-line no-console
   console.info(`Joncy has build and revalidation times set at: `, builtAt, revalidatedAt);
 
   return (
@@ -68,7 +69,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // Get jobs list
   const jobs = await api.list();
 
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NEXT_PUBLIC_ENV === "production") {
     // Build sitemap for all the jobs only in production
     fs.writeFileSync("public/sitemap.xml", buildSitemap(jobs));
   }
