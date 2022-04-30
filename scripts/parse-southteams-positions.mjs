@@ -140,14 +140,15 @@ const data = POSITIONS.split(` - This rate is just average.`)
     const rate = _rate.replace("Average Rate: $", "~ USD ");
 
     // Build whatsapp text
-    const waText = encodeURIComponent(`Estoy interesado en la posición ${id} - ${title} de Southteams.
+    const waText =
+      encodeURIComponent(`Estoy interesado en la posición ${id} - ${title} de Southteams.
 
 LinkedIn: \${ tokens["Perfil de LinkedIn"] }
 Email: \${ tokens["Email"] }
 Salario pretendido: \${ tokens["Salario pretendido"] }
 Teléfono: \${ tokens["Teléfono"] }
 
-Confirmo que tengo un nivel de inglés conversacional que me permite compeltar una jornada laboral con gente que no habla español.`);
+Confirmo que tengo un nivel de inglés conversacional que me permite completar una jornada laboral con gente que no habla español.`);
 
     // Create the link
     const link = `https://wa.me?phone=5491141634695&text=${waText}`;
