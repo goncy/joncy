@@ -31,7 +31,7 @@ export default extendTheme({
       variants: {
         link: (props) => ({
           color: `${props.colorScheme}.700`,
-          ".chakra-ui-dark &": {
+          _dark: {
             color: `${props.colorScheme}.200`,
           },
         }),
@@ -41,7 +41,7 @@ export default extendTheme({
       baseStyle: {
         opacity: 1,
         borderColor: "blackAlpha.200",
-        ".chakra-ui-dark &": {
+        _dark: {
           borderColor: "whiteAlpha.300",
         },
       },
@@ -51,7 +51,7 @@ export default extendTheme({
         outline: (props) => ({
           color: `${props.colorScheme}.700`,
           boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][700]}`,
-          ".chakra-ui-dark &": {
+          _dark: {
             color: `${props.colorScheme}.200`,
             boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][200]}`,
           },
@@ -70,20 +70,20 @@ export default extendTheme({
   layerStyles: {
     card: {
       backgroundColor: "white",
-      ".chakra-ui-dark &": {
+      _dark: {
         backgroundColor: "gray.800",
       },
     },
     "featured-card": {
       backgroundColor: "primary.50",
-      ".chakra-ui-dark &": {
+      _dark: {
         backgroundColor: "primary.900",
       },
     },
     container: {
       backgroundColor: "white",
       borderColor: "blackAlpha.200",
-      ".chakra-ui-dark &": {
+      _dark: {
         borderColor: "whiteAlpha.300",
         backgroundColor: "gray.800",
       },
@@ -92,7 +92,7 @@ export default extendTheme({
   textStyles: {
     soft: {
       color: "blackAlpha.700",
-      ".chakra-ui-dark &": {
+      _dark: {
         color: "whiteAlpha.700",
       },
     },
@@ -100,13 +100,13 @@ export default extendTheme({
       "&": {
         color: "primary.500",
       },
-      ".chakra-ui-dark &": {
+      _dark: {
         color: "primary.400",
       },
     },
     success: {
       color: "green.600",
-      ".chakra-ui-dark &": {
+      _dark: {
         color: "green.300",
       },
     },
