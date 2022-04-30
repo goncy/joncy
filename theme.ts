@@ -19,8 +19,6 @@ export default extendTheme({
         backgroundPosition: "start",
         backgroundSize: "100% 200px",
         backgroundColor: mode("gray.50", "gray.900")(props),
-      },
-      "#__next": {
         padding: {
           base: 0,
           md: 4,
@@ -58,6 +56,14 @@ export default extendTheme({
             boxShadow: `inset 0 0 0px 1px ${props.theme["colors"][props.colorScheme][200]}`,
           },
         }),
+      },
+    },
+    Modal: {
+      parts: ["dialogContainer"],
+      baseStyle: {
+        dialogContainer: {
+          padding: 4,
+        },
       },
     },
   },
