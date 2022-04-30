@@ -20,6 +20,13 @@ function IdRoute({job}: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) => {
+  // Don't render this page in production
+  if (process.env.NEXT_PUBLIC_ENV === "production") {
+    return {
+      notFound: true,
+    };
+  }
+
   // Get job for selected mock
   const job = await api.mock.fetch(params.mock);
 

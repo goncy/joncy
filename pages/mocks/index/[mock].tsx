@@ -20,6 +20,13 @@ const IndexRoute: React.FC<Props> = ({jobs}) => {
 };
 
 export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) => {
+  // Don't render this page in production
+  if (process.env.NEXT_PUBLIC_ENV === "production") {
+    return {
+      notFound: true,
+    };
+  }
+
   // Get jobs for selected mock
   const jobs = await api.mock.list(params.mock);
 

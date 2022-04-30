@@ -220,13 +220,8 @@ function JobCard({job}: Props): JSX.Element {
           </Stack>
         </Stack>
       </Box>
-      {Boolean(questions.length) && (
-        <Modal
-          blockScrollOnMount
-          preserveScrollBarGap
-          isOpen={isModalShown}
-          onClose={() => toggleModal(false)}
-        >
+      {Boolean(questions.length) && isModalShown && (
+        <Modal blockScrollOnMount isOpen preserveScrollBarGap onClose={() => toggleModal(false)}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Aplicar a {job.title}</ModalHeader>
