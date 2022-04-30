@@ -42,7 +42,10 @@ function JobCard({job}: Props): JSX.Element {
   const [formData, setFormData] = useState<Record<string, string>>(() =>
     typeof window === "undefined" ? {} : getTokensValues(questions),
   );
-  const link = useMemo(() => compileLink(job.link, formData), [job.link, formData]);
+  const link = useMemo(
+    () => (questions.length ? compileLink(job.link, formData) : job.link),
+    [job.link, formData, questions.length],
+  );
 
   function handleApply() {
     analytics.track("click", {
