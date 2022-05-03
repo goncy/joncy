@@ -1,7 +1,7 @@
 import * as React from "react";
 import {GetStaticProps} from "next";
 import Head from "next/head";
-import {Stack, Textarea} from "@chakra-ui/react";
+import {Stack, Textarea, FormControl, FormLabel} from "@chakra-ui/react";
 import papaparse from "papaparse";
 
 const TAGS = [
@@ -165,13 +165,19 @@ Confirmo que tengo un nivel de inglés conversacional que me permite completar u
       </Head>
 
       <Stack padding={4}>
-        <Textarea
-          placeholder="Paste Southteams positions email"
-          rows={20}
-          value={input}
-          onChange={handleTransform}
-        />
-        <Textarea readOnly placeholder="CSV Output" rows={20} value={output} />
+        <FormControl>
+          <FormLabel>Input</FormLabel>
+          <Textarea
+            placeholder="Paste Southteams positions email"
+            rows={20}
+            value={input}
+            onChange={handleTransform}
+          />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Output</FormLabel>
+          <Textarea readOnly placeholder="CSV Output" rows={20} value={output} />
+        </FormControl>
       </Stack>
     </>
   );

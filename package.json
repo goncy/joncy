@@ -17,6 +17,7 @@
     "@emotion/styled": "^11",
     "axios": "^0.21.1",
     "framer-motion": "^4",
+    "jspdf": "^2.5.1",
     "lodash.template": "^4.5.0",
     "next": "^12.1.5",
     "next-pwa": "^5.5.2",
