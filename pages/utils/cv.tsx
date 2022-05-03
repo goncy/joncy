@@ -197,7 +197,7 @@ const CVUtilPage: React.FC = () => {
                       </Text>
                       :{" "}
                       <Link isExternal href={profile.url}>
-                        {profile.username}
+                        {profile.url}
                       </Link>
                     </Text>
                   ))}
