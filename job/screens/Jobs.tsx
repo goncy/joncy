@@ -11,9 +11,11 @@ interface Props {
 
 const JobsScreen: React.FC<Props> = ({jobs}) => {
   const {selected: selectedTags, tags, toggle: toggleTag} = useTags(jobs);
-  const {selected: selectedSeniorities, seniorities, toggle: toggleSeniority} = useSeniorities(
-    jobs,
-  );
+  const {
+    selected: selectedSeniorities,
+    seniorities,
+    toggle: toggleSeniority,
+  } = useSeniorities(jobs);
   const hasSeniorities = seniorities.length > 0;
   const hasTags = tags.length > 0;
   const matches = React.useMemo(
