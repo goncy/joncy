@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const jobs = await api.list();
 
     // Revalidate index path
-    res.unstable_revalidate("/");
+    await res.unstable_revalidate("/");
 
     // Revalidate id paths
     for (const job of jobs) {
