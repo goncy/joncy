@@ -8,13 +8,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Get all job paths
     const jobs = await api.list();
 
+    // Revalidate index path
+    res.unstable_revalidate("/");
+
     // Revalidate id paths
     for (const job of jobs) {
       res.unstable_revalidate(`/${job.id}`);
     }
-
-    // Revalidate index path
-    res.unstable_revalidate("/");
 
     // Send a success response
     return res.status(200).json({revalidated: true});
