@@ -16,7 +16,7 @@ interface Params extends ParsedUrlQuery {
   id: string;
 }
 
-function IdRoute({job}: Props): JSX.Element {
+const IdRoute: React.FC<Props> = ({job}) => {
   return (
     <>
       <Head>
@@ -57,7 +57,7 @@ function IdRoute({job}: Props): JSX.Element {
       <JobScreen job={job} />
     </>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) => {
   try {

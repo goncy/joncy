@@ -303,7 +303,7 @@ const CVUtilPage: React.FC = () => {
             </Stack>
           </Stack>
         )}
-        <Button onClick={handleSave}>Export CV</Button>
+        <Button onClick={handleSave}>Export CV to PDF</Button>
       </Stack>
     </>
   );

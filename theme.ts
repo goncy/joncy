@@ -1,5 +1,4 @@
 import {extendTheme, theme} from "@chakra-ui/react";
-import {mode} from "@chakra-ui/theme-tools";
 
 export default extendTheme({
   config: {
@@ -9,22 +8,6 @@ export default extendTheme({
   colors: {
     primary: theme.colors.purple,
     secondary: theme.colors.whatsapp,
-  },
-  styles: {
-    global: (props) => ({
-      body: {
-        minHeight: "100vh",
-        background: "url(/assets/banner.jpg)",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "start",
-        backgroundSize: "100% 200px",
-        backgroundColor: mode("gray.50", "gray.900")(props),
-        padding: {
-          base: 0,
-          md: 4,
-        },
-      },
-    }),
   },
   components: {
     Button: {

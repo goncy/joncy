@@ -1,4 +1,3 @@
-import * as React from "react";
 import NextLink from "next/link";
 import {Stack, Link, StackDivider} from "@chakra-ui/react";
 
@@ -9,7 +8,7 @@ interface Props {
   job: Job;
 }
 
-function JobScreen({job}: Props): JSX.Element {
+const JobScreen: React.FC<Props> = ({job}) => {
   return (
     <Stack divider={<StackDivider />} spacing={0}>
       <JobCard key={job.id} job={job} />
@@ -20,6 +19,6 @@ function JobScreen({job}: Props): JSX.Element {
       </NextLink>
     </Stack>
   );
-}
+};
 
 export default JobScreen;

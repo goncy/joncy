@@ -15,9 +15,9 @@ interface Params extends ParsedUrlQuery {
   mock: string;
 }
 
-function IdRoute({job}: Props): JSX.Element {
+const IdRoute: React.FC<Props> = ({job}) => {
   return <JobScreen job={job} />;
-}
+};
 
 export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) => {
   // Don't render this page in production
