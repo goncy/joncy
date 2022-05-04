@@ -11,9 +11,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Revalidate index path
     res.unstable_revalidate("/");
 
-    // Revalidate sitemap
-    res.unstable_revalidate("/sitemap.xml");
-
     // Revalidate id paths
     for (const job of jobs) {
       res.unstable_revalidate(`/${job.id}`);
