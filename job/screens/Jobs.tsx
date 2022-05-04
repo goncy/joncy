@@ -59,7 +59,7 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
                     as="button"
                     colorScheme="primary"
                     fontSize={{base: 16, md: 12}}
-                    variant={selectedSeniorities.includes(tag) ? "subtle" : "outline"}
+                    variant={selectedSeniorities.includes(tag) ? "solid" : "subtle"}
                     onClick={() => toggleSeniority(tag)}
                   >
                     {tag}
@@ -76,7 +76,7 @@ const JobsScreen: React.FC<Props> = ({jobs}) => {
                     as="button"
                     colorScheme="secondary"
                     fontSize={{base: 16, md: 12}}
-                    variant={selectedTags.includes(tag) ? "subtle" : "outline"}
+                    variant={selectedTags.includes(tag) ? "solid" : "subtle"}
                     onClick={() => toggleTag(tag)}
                   >
                     {tag}
