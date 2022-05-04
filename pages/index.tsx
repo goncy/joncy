@@ -1,5 +1,3 @@
-import fs from "fs";
-
 import * as React from "react";
 import {GetStaticProps} from "next";
 import Head from "next/head";
@@ -7,7 +5,6 @@ import Head from "next/head";
 import {Job} from "../job/types";
 import api from "../job/api";
 import JobsScreen from "../job/screens/Jobs";
-import {buildSitemap} from "../app/utils/sitemap";
 
 interface Props {
   jobs: Job[];
@@ -64,11 +61,6 @@ const IndexRoute: React.FC<Props> = ({jobs, builtAt}) => {
 export const getStaticProps: GetStaticProps = async () => {
   // Get jobs list
   const jobs = await api.list();
-
-  if (process.env.NEXT_PUBLIC_ENV === "production") {
-    // Build sitemap for all the jobs only in production
-    fs.writeFileSync("public/sitemap.xml", buildSitemap(jobs));
-  }
 
   return {
     props: {

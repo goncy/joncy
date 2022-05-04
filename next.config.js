@@ -9,4 +9,12 @@ module.exports = withPWA({
   images: {
     domains: [process.env.NEXT_PUBLIC_URL],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap",
+      },
+    ];
+  },
 });
