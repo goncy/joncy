@@ -9,18 +9,14 @@ import api from "../job/api";
 import JobsScreen from "../job/screens/Jobs";
 import {buildSitemap} from "../app/utils/sitemap";
 
-// Set revalidation every 6 hours
-const REVALIDATION_SECONDS = 3600 * 6;
-
 interface Props {
   jobs: Job[];
   builtAt: number;
-  revalidatedAt: number;
 }
 
-const IndexRoute: React.FC<Props> = ({jobs, builtAt, revalidatedAt}) => {
+const IndexRoute: React.FC<Props> = ({jobs, builtAt}) => {
   // eslint-disable-next-line no-console
-  console.info(`Joncy has build and revalidation times set at: `, builtAt, revalidatedAt);
+  console.info(`Joncy has build and revalidation times set at: `, builtAt);
 
   return (
     <>
@@ -75,14 +71,10 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
-    // Revalidate every 6 hours
-    revalidate: REVALIDATION_SECONDS,
     props: {
       jobs,
       // Get when the page was built
       builtAt: +new Date(),
-      // Multiply revalidation seconds * 1000 so we get milliseconds back
-      revalidatedAt: +new Date() + REVALIDATION_SECONDS * 1000,
     },
   };
 };

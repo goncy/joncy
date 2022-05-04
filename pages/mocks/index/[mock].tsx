@@ -31,8 +31,6 @@ export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) 
   const jobs = await api.mock.list(params.mock);
 
   return {
-    // Revalidate every 1 second
-    revalidate: 1,
     props: {
       jobs,
     },

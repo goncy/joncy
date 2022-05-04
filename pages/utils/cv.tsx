@@ -210,7 +210,7 @@ const CVUtilPage: React.FC = () => {
                   <Text fontSize="2xl" fontWeight={500}>
                     Bio
                   </Text>
-                  <Text>{profile.basics.summary}</Text>
+                  <Text whiteSpace="pre-wrap">{profile.basics.summary}</Text>
                 </Stack>
               )}
               {profile.work.length && (

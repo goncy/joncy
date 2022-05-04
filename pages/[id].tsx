@@ -70,8 +70,6 @@ export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) 
     }
 
     return {
-      // Revalidate every 6 hours
-      revalidate: 3600 * 6,
       props: {
         job,
       },
