@@ -222,7 +222,10 @@ const CVUtilPage: React.FC = () => {
                     {profile.work.map((work) => (
                       <Stack key={`${work.name} ${work.position}`}>
                         <Stack spacing={0}>
-                          <Text fontSize="xl" fontWeight={500}>
+                          <Text fontSize="xs" lineHeight="normal">
+                            {work.startDate} - {work.endDate || "Ongoing"}
+                          </Text>
+                          <Text fontSize="xl" fontWeight={500} lineHeight="normal">
                             {work.name}
                           </Text>
                           <Text color="primary.500" fontSize="md">
