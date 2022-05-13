@@ -1,8 +1,9 @@
-import NextLink from "next/link";
-import {Stack, Link, StackDivider} from "@chakra-ui/react";
+import type {Job} from "../types";
 
-import {Job} from "../types";
+import {Stack, StackDivider} from "@chakra-ui/react";
+
 import JobCard from "../components/JobCard";
+import Link from "../../ui/controls/Link";
 
 interface Props {
   job: Job;
@@ -12,11 +13,9 @@ const JobScreen: React.FC<Props> = ({job}) => {
   return (
     <Stack divider={<StackDivider />} spacing={0}>
       <JobCard key={job.id} job={job} />
-      <NextLink href="/">
-        <Link padding={4} role="button" textAlign="center" textStyle="link">
-          Ver todas las propuestas
-        </Link>
-      </NextLink>
+      <Link href="/" padding={4} role="button" textAlign="center" textStyle="link">
+        Ver todas las propuestas
+      </Link>
     </Stack>
   );
 };

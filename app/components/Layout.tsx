@@ -6,7 +6,6 @@ import {
   Container,
   Stack,
   Divider,
-  Link,
   StackDivider,
   useColorMode,
   Box,
@@ -18,6 +17,7 @@ import TwitterIcon from "../../ui/icons/Twitter";
 import FixedImage from "../../ui/display/FixedImage";
 import TwitchIcon from "../../ui/icons/Twitch";
 import YoutubeIcon from "../../ui/icons/Youtube";
+import Link from "../../ui/controls/Link";
 
 const Layout: FC<{children: React.ReactNode}> = ({children}) => {
   const {toggleColorMode, colorMode} = useColorMode();
@@ -105,7 +105,6 @@ const Layout: FC<{children: React.ReactNode}> = ({children}) => {
                     href="https://twitter.gonzalopozzo.com"
                     justifyContent="center"
                     padding={1.5}
-                    rel="noopener"
                     title="twitter"
                     width={8}
                   >
@@ -122,7 +121,6 @@ const Layout: FC<{children: React.ReactNode}> = ({children}) => {
                     href="https://twitch.gonzalopozzo.com"
                     justifyContent="center"
                     padding={1.5}
-                    rel="noopener"
                     title="twitch"
                     width={8}
                   >
@@ -139,7 +137,6 @@ const Layout: FC<{children: React.ReactNode}> = ({children}) => {
                     href="https://youtube.gonzalopozzo.com"
                     justifyContent="center"
                     padding={1.5}
-                    rel="noopener"
                     title="youtube"
                     width={8}
                   >

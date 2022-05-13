@@ -10,7 +10,6 @@ import {
   Wrap,
   WrapItem,
   useToast,
-  Link,
   useClipboard,
   LinkBox,
   LinkOverlay,
@@ -24,21 +23,32 @@ import {
   FormControl,
   FormLabel,
   Input,
+  ModalProps,
 } from "@chakra-ui/react";
 import {StarIcon} from "@chakra-ui/icons";
+import NextLink from "next/link";
 
 import * as analytics from "../../analytics";
 import FixedImage from "../../ui/display/FixedImage";
 import {compileLink, getLinkTokens, getTokensValues, setTokensValues} from "../utils/link";
-interface Props {
-  job: Job;
-}
+import Link from "../../ui/controls/Link";
 
-function JobCard({job}: Props): JSX.Element {
-  const toast = useToast();
-  const {onCopy} = useClipboard(`${process.env.NEXT_PUBLIC_URL}/${job.id}`);
-  const [isModalShown, toggleModal] = useState<boolean>(false);
-  const questions = useMemo(() => getLinkTokens(job.link), [job.link]);
+type Props = {
+  job: Job;
+};
+
+type JobQuestionModalProps = Omit<ModalProps, "children"> & {
+  questions: string[];
+  onSubmit: VoidFunction;
+  job: Job;
+};
+
+function JobQuestionsModal({
+  questions,
+  job,
+  onSubmit,
+  ...props
+}: JobQuestionModalProps): JSX.Element {
   const [formData, setFormData] = useState<Record<string, string>>(() =>
     typeof window === "undefined" ? {} : getTokensValues(questions),
   );
@@ -46,6 +56,56 @@ function JobCard({job}: Props): JSX.Element {
     () => (questions.length ? compileLink(job.link, formData) : job.link),
     [job.link, formData, questions.length],
   );
+
+  useEffect(() => {
+    setTokensValues(formData);
+  }, [formData]);
+
+  return (
+    <Modal {...props}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>Aplicar a {job.title}</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Stack spacing={6}>
+            {questions.map((question) => {
+              return (
+                <FormControl key={question}>
+                  <FormLabel htmlFor={question}>{question}</FormLabel>
+                  <Input
+                    id={question}
+                    type="text"
+                    value={formData[question]}
+                    onChange={(event) =>
+                      setFormData((formData) => ({...formData, [question]: event.target.value}))
+                    }
+                  />
+                </FormControl>
+              );
+            })}
+          </Stack>
+        </ModalBody>
+        <ModalFooter alignItems="center" display="flex" justifyContent="space-between">
+          <Button variant="ghost" onClick={props.onClose}>
+            Cerrar
+          </Button>
+          <Link isExternal href={link} onClick={onSubmit}>
+            <Button aria-label="Aplicar" colorScheme="primary">
+              Aplicar
+            </Button>
+          </Link>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+}
+
+function JobCard({job}: Props): JSX.Element {
+  const toast = useToast();
+  const {onCopy} = useClipboard(`${process.env.NEXT_PUBLIC_URL}/${job.id}`);
+  const [isModalShown, toggleModal] = useState<boolean>(false);
+  const questions = useMemo(() => getLinkTokens(job.link), [job.link]);
 
   function handleApply() {
     analytics.track("click", {
@@ -80,10 +140,6 @@ function JobCard({job}: Props): JSX.Element {
       description: "El link de la oportunidad fue copiado al portapapeles",
     });
   }
-
-  useEffect(() => {
-    setTokensValues(formData);
-  }, [formData]);
 
   return (
     <>
@@ -122,15 +178,16 @@ function JobCard({job}: Props): JSX.Element {
                 <Text fontSize={{base: "md", md: "sm"}} lineHeight="normal" textStyle="soft">
                   {job.company}
                 </Text>
-                <LinkOverlay
-                  aria-label={job.title}
-                  fontSize={{base: "xl", md: "lg"}}
-                  fontWeight="500"
-                  href={`/${job.id}`}
-                  lineHeight="normal"
-                >
-                  {job.title}
-                </LinkOverlay>
+                <NextLink passHref href={`/${job.id}`}>
+                  <LinkOverlay
+                    aria-label={job.title}
+                    fontSize={{base: "xl", md: "lg"}}
+                    fontWeight="500"
+                    lineHeight="normal"
+                  >
+                    {job.title}
+                  </LinkOverlay>
+                </NextLink>
               </Stack>
             </Stack>
             {job.featured && (
@@ -202,12 +259,7 @@ function JobCard({job}: Props): JSX.Element {
                   Aplicar
                 </Button>
               ) : (
-                <Link
-                  isExternal
-                  href={job.link}
-                  rel="noopener noreferrer nofollow"
-                  onClick={handleApply}
-                >
+                <Link isExternal href={job.link} onClick={handleApply}>
                   <Button
                     aria-label="Aplicar"
                     colorScheme="primary"
@@ -224,43 +276,15 @@ function JobCard({job}: Props): JSX.Element {
         </Stack>
       </Box>
       {Boolean(questions.length) && isModalShown && (
-        <Modal blockScrollOnMount isOpen preserveScrollBarGap onClose={() => toggleModal(false)}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Aplicar a {job.title}</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Stack spacing={6}>
-                {questions.map((question) => {
-                  return (
-                    <FormControl key={question}>
-                      <FormLabel htmlFor={question}>{question}</FormLabel>
-                      <Input
-                        id={question}
-                        type="text"
-                        value={formData[question]}
-                        onChange={(event) =>
-                          setFormData((formData) => ({...formData, [question]: event.target.value}))
-                        }
-                      />
-                    </FormControl>
-                  );
-                })}
-              </Stack>
-            </ModalBody>
-
-            <ModalFooter alignItems="center" display="flex" justifyContent="space-between">
-              <Button variant="ghost" onClick={() => toggleModal(false)}>
-                Cerrar
-              </Button>
-              <Link isExternal href={link} rel="noopener noreferrer nofollow" onClick={handleApply}>
-                <Button aria-label="Aplicar" colorScheme="primary">
-                  Aplicar
-                </Button>
-              </Link>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
+        <JobQuestionsModal
+          blockScrollOnMount
+          isOpen
+          preserveScrollBarGap
+          job={job}
+          questions={questions}
+          onClose={() => toggleModal(false)}
+          onSubmit={handleApply}
+        />
       )}
     </>
   );
