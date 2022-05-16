@@ -6,7 +6,7 @@ import {Job} from "../types";
 import {RawJob} from "./types";
 import {parseJob, parseJobs} from "./utils";
 
-const api = {
+const production = {
   list: async (): Promise<Job[]> => {
     return axios
       .get(process.env.NEXT_PUBLIC_SHEET, {
@@ -24,16 +24,25 @@ const api = {
       );
   },
   fetch: async (id: Job["id"]): Promise<Job> => {
-    const jobs: Job[] = await api.list();
+    const jobs: Job[] = await production.list();
 
     return jobs.find((job) => job.id === id);
   },
-  mock: {
-    list: (mock: string): Promise<Job[]> =>
-      import(`./mocks/list/${mock}.json`).then((result) => parseJobs(result.default)),
-    fetch: (mock: string): Promise<Job> =>
-      import(`./mocks/single/${mock}.json`).then((result) => parseJob(result.default)),
-  },
 };
 
-export default api;
+const development = {
+  list: (): Promise<Job[]> =>
+    import(`./mocks/list/default.json`).then((result) => parseJobs(result.default as RawJob[])),
+  fetch: (): Promise<Job> =>
+    import(`./mocks/fetch/default.json`).then((result) => parseJob(result.default)),
+};
+
+export default new Proxy<typeof production>(
+  {
+    production,
+    development,
+  } as unknown as typeof production,
+  {
+    get: (target, name) => target[process.env.NEXT_PUBLIC_ENV][name] || production[name],
+  },
+);
