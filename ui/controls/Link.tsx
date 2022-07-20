@@ -6,7 +6,7 @@ import {Link as ChakraLink} from "@chakra-ui/react";
 function Link({href, children, isExternal, ...props}: LinkProps) {
   if (isExternal) {
     return (
-      <ChakraLink isExternal rel="noopener noreferrer nofollow" {...props}>
+      <ChakraLink isExternal href={href} rel="noopener noreferrer nofollow" {...props}>
         {children}
       </ChakraLink>
     );

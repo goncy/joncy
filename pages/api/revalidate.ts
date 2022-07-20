@@ -9,12 +9,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const jobs = await api.list();
 
     // Revalidate index path
-    await res.unstable_revalidate("/");
+    await res.revalidate("/");
 
     // Revalidate id paths
-    const result = await Promise.allSettled(
-      jobs.map((job) => res.unstable_revalidate(`/${job.id}`)),
-    );
+    const result = await Promise.allSettled(jobs.map((job) => res.revalidate(`/${job.id}`)));
 
     // Send a success response
     return res.status(200).json(result);
