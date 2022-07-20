@@ -84,7 +84,8 @@ Email: \${ tokens["Email"] }
 Salario pretendido: \${ tokens["Salario pretendido"] }
 Teléfono: \${ tokens["Teléfono"] }
 
-Confirmo que tengo un nivel de inglés conversacional que me permite completar una jornada laboral con gente que no habla español.`);
+Confirmo que tengo un nivel de inglés conversacional que me permite completar una jornada laboral con gente que no habla español.
+Adjunto audio de whatsapp de +30 segundos contestando la siguiente pregunta en inglés: "What do you do in your free time?"`);
 
           // Create the link
           const link = `https://wa.me?phone=5491141634695&text=${waText}`;
